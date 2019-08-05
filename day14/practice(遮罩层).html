@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .mask {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #111;
+            opacity: .8 !important;
+        }
+
+        .sign{
+            display: none;
+            position: relative;
+            border: 1px solid #000;
+            width: 300px;
+            height: 100px;
+            margin: 80px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap"></div>
+    良好的佛个阿红发的女爱豆辅导费附加费<br>
+    <input type="button" value="登录" onclick="show()">
+    <div class="mask"></div>
+    <div class="sign">
+        <a href="javascript:void(0)">关闭</a>
+        <input type="text"><br>
+        <input type="text"><br>
+        <input type="submit">
+    </div>
+    <script src="../jQuery/jquery-3.4.1.min.js">
+    </script>
+    <script>
+        function show(){
+            console.log(1)
+            $('.mask').css({
+                'display':'block',
+                'width':`${document.scrollwidth}px`,
+                'height':`${document.scrollheight}px`
+            })
+        }
+
+    </script>
+</body>
+
+</html>
