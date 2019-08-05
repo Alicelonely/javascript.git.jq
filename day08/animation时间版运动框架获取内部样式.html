@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            opacity: 0;
+            /* 过渡 */
+        }
+
+        #box:hover {
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+<script>
+    //获取标签元素
+    let oBox = document.querySelector("#box");
+
+    //封装框架  dom那个节点运动 attr节点的那个属性增加 target运动的终点 speed运动的速度
+
+    function animation(dom, attr, target, time) {
+
+        //获取起点值
+        let startAttr = getStyle(dom, attr);
+        //计算速度
+        let speed = (target - startAttr) / (time * 1000);
+        //获取初试时间
+        let startTime = new Date();
+
+        //设置定时器
+        let timer = setInterval(function () {
+            //获取时间差
+            let _time = new Date() - startTime;
+
+            dom.style[attr] = attr == "opacity" ? startAttr + _time * speed : startAttr + _time * speed + 'px';
+
+            //判断收尾
+            if (getStyle(dom, attr) >= target) {
+
+                dom.style[attr] = attr == "opacity" ? target : target + 'px';
+
+                clearInterval(timer);
+            }
+        }, 20)
+    }
+
+    function getStyle(dom, attr) {
+        return dom.currentStyle ? parseFloat(dom.currentStyle[attr]) : parseFloat(getComputedStyle(dom)[attr]);
+    }
+
+    animation(oBox, 'width', 400, 2);
+    animation(oBox, 'opacity', 1, 2);
+    // 没有办法让多个函数同时执行并且同时到达终点
+</script>
+
+</html>

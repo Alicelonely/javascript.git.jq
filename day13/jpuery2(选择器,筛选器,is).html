@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+
+<script src="../jQuery/jquery-3.4.1.min.js">
+</script>
+<script>
+        //jQuery支持css2.1所有的选择器,和css3部分的选择器
+
+        //可以传组合选择器  相当于      document.querySelectorAll       获取多个元素需要加下表索引
+
+        //文档加载      $(document).ready(function(){ console.log('#wrap')})    相当于$(function(){})     相当于window.onload = function(){}   
+
+
+        //筛选器
+        $('div').css()
+        //选择第一个div
+        $('div:first')
+        //选择最后一个
+        $('div:last')
+        //获取任意一个  括号里面传入索引    :eq()
+        $('div:eq(0)')
+        //排除哪个  
+        $('div:not(.box)')
+        //获取一个范围值
+        //  :lt()小于,但是不包括  :gt()大于 ,但是不包括    传下标
+        $('div:lt(2)')
+
+        //获取奇偶数        :odd    :even      索引的奇偶数
+        $('div:odd')
+
+
+        //7.特殊的过滤器
+        //筛选器方法
+        //1.eq(1)
+
+        //2.选择第一个和最后一个    first()     last()      
+        //not()     要加引号
+
+
+
+
+
+        //8.判断是否具有某个类名
+        //hasClass()    里面传类名不用加点或者#
+
+        //判断是否具有class类名
+        //is()      这里面要加点和#
+        //is(":odd")    is里面传入筛选器
+        
+</script>
+</body>
+</html>

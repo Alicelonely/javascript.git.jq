@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <select name="" id="province" onchange="cased1()">
+        <option value="">--请选择--</option>
+        <option value="上海">上海</option>
+        <option value="广东">广东</option>
+        <option value="深圳">深圳</option>
+    </select>
+    <select name="" id="city">
+        <option value="">---请选择---</option>
+    </select>
+    <script src="../jQuery/jquery-3.4.1.min.js">
+    </script>
+    <script>
+        function cased1() {
+            let arr = new Array(3);
+            arr["上海"] = ['珠江', '青岛', '京海'];
+            arr["广东"] = ['汴梁', '虎口', "海南"];
+            arr["深圳"] = ['动静', '平安', '毛豆'];
+            document.getElementById("city").options.length = 0;
+            let op = $("#province").val();
+            for (key in arr[op]) {
+                let $oop = $(`<option>${arr[op][key]}</option>`);
+                $("#city").append($oop);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

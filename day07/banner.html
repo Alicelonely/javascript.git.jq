@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #wrap {
+            width: 870px;
+            height: 100px;
+            margin: 0px auto;
+        }
+
+        /* center在盒子中间居中显示 */
+        /* contain不会居中但是不会改变原图片的尺寸大小 */
+        /* 2、background-position：确定图片显示的位置。
+
+    background-position: 30px 50px;   图片在水平方向上向右偏移30px，在垂直方向上偏移50px
+
+    background-position:  right bottom;  图片显示在右下角
+
+    background-position:  center;     图片显示在中间
+
+    background-position: right top;   图片显示在右上角
+
+    background-position: left bottom;    图片显示在左下角
+
+    background-position: center top;    图片显示在上中间
+
+    3、background-size：背景图片的大小
+
+    background-size: 100%  100%;    背景图片的大小
+
+    background-size: contain;     contain：图片宽高等比例缩放，直到宽或高填满父布局，有可能出现布局填充不完整。
+
+    background-size: cover;      cover：图片宽高等比例缩放，直到较小的宽或高填满父布局，可能出现图片溢出。 */
+        #wrap .top {
+            width: 100%;
+            height: 82px;
+        }
+        #wrap .top img{
+            float: left;
+        }
+
+        #wrap .bottom {
+            width: 100%;
+            height: 25px;
+            font-size: 10px;
+            color: #fff;
+            background-color: #383838;
+        }
+
+
+
+        #wrap ul li {
+            float: left;
+            height: 12px;
+            text-align: center;
+            line-height: 25px;
+            margin-left:10px; 
+        }
+        #wrap ul li img{
+            width: 1px;
+            height: 12px;
+            margin-left:10px; 
+            vertical-align: middle;
+        }
+        ul:after {
+            content: ".";
+            display: block;
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="top"><img src="../images/浮动图片素材1/forumLogo.jpg" alt=""><img src="../images/浮动图片素材1/forumLogo_r.jpg" alt=""></div>
+        <div class="bottom">
+            <ul>
+                <li>涯知识库<img src="../images/浮动图片素材1/forumMenuBg.gif" alt=""></li>
+                <li>涯知识库<img src="../images/浮动图片素材1/forumMenuBg.gif" alt=""></li>
+                <li>涯知识库<img src="../images/浮动图片素材1/forumMenuBg.gif" alt=""></li>
+                <li>涯知识库<img src="../images/浮动图片素材1/forumMenuBg.gif" alt=""></li>
+                <li>涯知识库<img src="../images/浮动图片素材1/forumMenuBg.gif" alt=""></li>
+                <li>涯知识库<img src="../images/浮动图片素材1/forumMenuBg.gif" alt=""></li>
+                <li>涯知识库<img src="../images/浮动图片素材1/forumMenuBg.gif" alt=""></li>
+                <li>涯知识库<img src="../images/浮动图片素材1/forumMenuBg.gif" alt=""></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+</script>
+
+</html>

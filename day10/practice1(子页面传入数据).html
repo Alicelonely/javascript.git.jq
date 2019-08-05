@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 1000px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        table td {
+            text-align: center;
+            padding: 20px 40px 20px 40px;
+        }
+
+        table td .text1 {
+            width: 250px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        table tr td span.reduce {
+            color: #000;
+            background-color: #ddd;
+            cursor: pointer;
+        }
+
+        table tr td span {
+            display: inline-block;
+        }
+
+        table tr td span.num {
+            margin: 0 0 0 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <table border="1" cellspacing="0" class="tables">
+            <tbody class="tbody1" id="abs">
+
+                <tr>
+                    <th colspan="7">简易购物车</th>
+                </tr>
+                <tr class=".test">
+                    <td><input type="checkbox" class="all" onclick="allElection()">全选&nbsp;&nbsp;<input type="checkbox"
+                            class="reverse" onclick="reverseElection()">反选</td>
+                    <td>商品名称</td>
+                    <td>数量(件)</td>
+                    <td>单价(元)</td>
+                    <td>运费(元)</td>
+                    <td>合计</td>
+                    <td>操作</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="election"></td>
+                    <td class="nam">双飞燕键盘1</td>
+                    <td><span class="reduce redu">-</span><span class="num">0</span> <span class="reduce add">+</span>
+                    </td>
+                    <td><span class="price">100</span> </td>
+                    <td><span class="freight">25</span></td>
+                    <td><span class="tolprice">0</span></td>
+                    <td><input type="button" value="删除" class="del"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="election"></td>
+                    <td class="nam">双飞燕键盘2</td>
+                    <td><span class="reduce redu">-</span><span class="num">0</span> <span class="reduce add">+</span>
+                    </td>
+                    <td><span class="price">100</span> </td>
+                    <td><span class="freight">25</span></td>
+                    <td><span class="tolprice">0</span></td>
+                    <td><input type="button" value="删除" class="del"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="election"></td>
+                    <td class="nam">双飞燕键盘3</td>
+                    <td><span class="reduce redu">-</span><span class="num">0</span> <span class="reduce add">+</span>
+                    </td>
+                    <td><span class="price">100</span> </td>
+                    <td><span class="freight">25</span></td>
+                    <td><span class="tolprice">0</span></td>
+                    <td><input type="button" value="删除" class="del"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="election"></td>
+                    <td class="nam">双飞燕键盘4</td>
+                    <td><span class="reduce redu">-</span><span class="num">0</span> <span class="reduce add">+</span>
+                    </td>
+                    <td><span class="price">100</span> </td>
+                    <td><span class="freight">25</span></td>
+                    <td><span class="tolprice">0</span></td>
+                    <td><input type="button" value="删除" class="del"></td>
+                </tr>
+
+            </tbody>
+
+            <tfoot>
+
+
+                <tr>
+                    <td>
+                        <p>名称:</p>
+                        <input type="text" class="name1">
+                        <p>数量:</p>
+                        <input type="text" class="amount">
+                        <p>单价:</p>
+                        <input type="text" class="univalence">
+                        <p>运费:</p>
+                        <input type="text" class="fare"><br>
+                        <input type="button" value="确认添加" style="margin-top:10px; " class="affirm" onclick="sdd()">
+                    </td>
+
+                    <td colspan="6"><a href="" onclick="Subpages()">请填写邮寄地址</a> <input type="text" class="text1"
+                            readonly="readonly" id="sub"> <input type="submit" value="提交订单" onclick="Submission()"><br>
+                        <span>总数:</span><span
+                            class="totalnum"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span>总价:</span><span class="total"></span>
+                        <br>
+                        <input type="button" name="" id="dela" value="删除所选" onclick="delElection()">
+                    </td>
+
+
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script src="../jQuery/jquery-3.4.1.min.js"></script>
+    <script>
+
+
+
+        // let redu = document.querySelectorAll("redu"),
+        //     add = document.querySelectorAll("add"),
+        //     num = document.querySelectorAll("num"),
+        //     price = document.querySelectorAll("price"),
+        //     tolprice = document.querySelectorAll("tolprice"),
+        //     nam = document.querySelectorAll('.nam'),
+        //     totalnum = document.querySelector("totalnum"),
+        //     total = document.querySelector("total"),
+        //     name = document.querySelector("name"),
+        //     amount = document.querySelector("amount"),
+        //     univalence = document.querySelector("univalence"),
+        //     fare = document.querySelector("fare"),
+        //     affirm = document.querySelector("affirm"),
+        //     tables = document.querySelector("tbody");
+
+        function $(a) {
+            return document.getElementsByClassName(a)[0]
+        }
+
+
+        
+        function ad(b) {
+            return document.getElementsByClassName(b)
+        }
+
+
+
+        //添加减少商品
+        for (let i = 0; i < ad("tolprice").length; i++) {
+            ad("add")[i].onclick = function () {
+                console.log(2)
+                ad("num")[i].innerHTML++
+                cale(i)
+            }
+            ad("redu")[i].onclick = function () {
+
+             
+                ad("num")[i].innerHTML--;
+
+                if (ad("num")[i].innerHTML * 1 <= 0) {
+                    ad("num")[i].innerHTML = 0;
+                    ad("tolprice")[i].innerHTML = 0;
+
+                }
+                cale(i)
+            }
+
+
+        }
+
+
+        //小计总计
+        function cale(idx) {
+
+            let talnum = 0,
+                talprice = 0;
+            let yunfei = ad("freight")[idx].innerHTML;
+            if (ad("num")[idx].innerHTML * 1 == 0) {
+                yunfei = 0;
+            }
+            ad("tolprice")[idx].innerHTML = ad("num")[idx].innerHTML * 1 * ad("price")[idx].innerHTML * 1 + yunfei * 1;
+            for (let i = 0; i < ad("tolprice").length; i++) {
+                talnum += ad("num")[i].innerHTML * 1
+                talprice += ad("tolprice")[i].innerHTML * 1
+            }
+
+
+            $("totalnum").innerHTML = talnum;
+
+            $("total").innerHTML = talprice;
+        }
+
+
+        //添加商品
+        function sdd() {
+            if ($("name1").value != '' && $("amount").value != '' && $("univalence").value != '' && $("fare").value != '') {
+                let oTr = document.createElement("TR");
+                // let otd = document.createElement("TD");
+                // let oSpan = document.createElement("SPAN");
+                // let ipt = document.createElement("INPUT");
+                //     ipt.setAttribute("type","checkbox");
+                //     ipt.className = "election";
+                //     otd.appendChild(ipt);
+                //     oTr.appendChild(otd);
+                //     // otd.className = "nam";
+                //     // otd.innerHTML = `${$("name1").value}`
+                //     // oTr.appendChild(otd);
+                //     abs.appendChild(oTr);
+
+
+                oTr.innerHTML += `
+                <td><input type="checkbox" class="election"></td>
+                <td class="nam">
+                        ${$("name1").value}
+                    </td>
+                <td>
+                    <span class="reduce redu">-</span>
+                    <span class="num">${$("amount").value}</span>
+                     <span class="reduce add">+</span> 
+                </td>
+                <td>
+                    <span class="price">${$("univalence").value}</span>
+                </td>
+                <td>
+                    <span class="freight"${$("fare").value}</span>
+                </td>
+                <td>
+                    <span class="tolprice">0</span>
+                </td>
+                <td>
+                    <input type="button" value="删除" class="del">
+                </td>
+                `
+                $("tbody1").appendChild(oTr);
+                $("name1").value = ''
+                $("amount").value = ''
+                $("univalence").value = ''
+                $("fare").value = ''
+            }
+
+
+        }
+
+
+        //打开子页面
+        function Subpages() {
+            open("subpages.html", "", "toolbars=0,location=0,statusbars=0,menubars=0,width=736,height=474,scrollbars=0");
+        }
+
+        //确认商品
+        function Submission() {
+            for (let i = 0; i < ad("num").length; i++) {
+                if (sub.value !== "") {
+                    confirm(`你购买的商品如下:${oTd[0].innerHTML}:${ad("nam")[i].innerHTML}
+            ${oTd[1].innerHTML}:${ad("num")[i].innerHTML}
+            ${oTd[2].innerHTML}:${ad("price")[i].innerHTML}
+            ${oTd[3].innerHTML}:${ad("freight")[i].innerHTML}
+            ${oTd[4].innerHTML}:${ad("tolprice")[i].innerHTML}
+            送货地址:${sub.value}
+            `)
+                }
+            }
+
+        }
+
+        //删除行
+        for (let i = 0; i < ad("del").length; i++) {
+            ad("del")[i].onclick = function (){
+                
+                let oTr = this.parentNode.parentNode;
+                oTr.parentNode.removeChild(oTr);
+            }
+
+        }
+
+
+        //全选按钮
+        function allElection() {
+
+            for (let i = 0; i < ad("election").length; i++) {
+                if ($("all").checked) {
+                    if (!ad("election")[i].checked) {
+                        ad("election")[i].checked = true;
+                    }
+                } else {
+                    ad("election")[i].checked = false;
+                }
+            }
+        }
+
+
+        //反选按钮
+        function reverseElection() {
+            for (let i = 0; i < ad("election").length; i++) {
+                if ($("reverse").checked) {
+                    if (ad("election")[i].checked) {
+                        ad("election")[i].checked = false;
+                    } else {
+                        ad("election")[i].checked = true;
+                    }
+                } else {
+                    ad("election")[i].checked = false;
+                }
+            }
+
+        }
+
+
+        //删除所选
+        function delElection(){
+            for (let i = 0; i < ad("election").length; i++) {
+                if (ad("election")[i].checked) {
+                    let oTr = ad("election")[i].parentNode.parentNode;
+                    oTr.parentNode.removeChild(oTr);
+                    i--;
+                }
+            }
+        }
+    </script>
+</body>
+
+
+</html>

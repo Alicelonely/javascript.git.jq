@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+
+<script src="">
+</script>
+<script>
+    //append()     添加节点         父节点.append(子节点)   添加多少个节点取决于选择器
+    $(".wuwei").append("<span></span>")
+
+
+    //创建一个节点          jquery的变量前面要加$符
+    $("<p></p>")
+
+    //3.appendTo()          子节点.appendTo(父节点)         插入在最后
+
+    //4.prepend()     插入在父节点最前面          prependTo()      子节点.appendTo(父节点)      
+    $(".wrap").prepend($(".wuwei"))
+
+    
+    
+    
+    //兄弟之间的插入
+    //6.affter()  before()      再选中的元素之前或者之后插入兄弟元素
+    $(".wrap").after($span)
+
+    //7.wrap()  在每一个选中的元素外面包裹一层元素
+    $(".wrap").wrap("<a></a>")
+
+    //8.wrapAll()   给所有选中的相同的标签没有连在一起的自动连在一起,总共在外面包裹一个标签
+
+
+
+    //9.节点的替换  replaceWith()   把所有的p标签替换为a标签
+    $("p").wrap("<a></a>")
+    //10.清空节点,清空p标签当中的所有内容
+    $('p').empty()
+    //11.删除节点
+    $(".wrap").remove()
+    //12.节点的克隆
+    let $wrap = $(".wrap").clone(true);
+    $("body").append($wrap);
+    //原生的js true代表克隆节点内部的内容,永远不克隆事件
+    // 永远克隆节点内部的内容,参数为true是克隆事件,不传为false,不克隆事件
+
+
+
+
+    
+</script>
+</body>
+</html>

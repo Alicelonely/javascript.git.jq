@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 400px;
+            margin: 10px auto;
+        }
+
+        #box .box_top textarea {
+            width: 400px;
+            height: 200px;
+            border-radius: 5%;
+        }
+
+        #box .box_top button {
+            float: right;
+        }
+
+        #box .box_top {
+            width: 400px;
+            margin-bottom: 35px;
+        }
+
+        #box .box_bottom {
+            margin-top: 20px;
+            border-top: 1px solid #000;
+        }
+
+        #box .box_bottom p {
+            padding: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+        <div class="box_top">
+            <textarea id="box1"></textarea>
+            <!-- <input type="text" style="width:200px; height:200px;" > -->
+            <button>提交</button>
+        </div>
+        <div class="box_bottom">
+
+        </div>
+    </div>
+
+
+    <script>
+        let box1 = document.querySelector("#box1");
+        let box2 = document.querySelector(".box_bottom");
+        let btn = document.querySelector("button");
+
+        btn.onclick = add;
+
+        function add() {
+            if (box1.value == "") {
+               alert("不能提交空白");
+            }else if(box1.value != ""){
+                box2.innerHTML += `<p>${box1.value}</p>`;
+                box1.value = "";
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

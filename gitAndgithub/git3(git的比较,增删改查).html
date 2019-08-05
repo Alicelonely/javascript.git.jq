@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //每一个新的文件都需要git add.操作
+        //git commit -am 只针对于修改的文件     红色字体modified: index.html 这是修改的文件
+        
+        //git diff  工作区和暂存区代码不一样的地方
+
+        //git diff id名 id名    两个快照之间的不同
+
+        //git diff id名     工作区与仓库快照之间的不同
+
+        //git diff --cached id名    比较的是暂存区的代码和仓库快照之间的不同
+
+        //git commit --amend -m '备注'  修改上一次快照,不创建新的快照
+
+        //git log --graph --oneline     仓库的快照都是一行显示, 显示快照id和备注信息
+
+        //git rm index.html     同时删除暂存区的和工作区的,但是仓库没有删除
+
+        //git reset --hard HEAD     删除恢复
+
+        //git rm -f文件名       暴力删除暂存去和工作区的不同
+
+        //git rm --cached index.html    删除暂存区的
+
+        //git mv index.html newindex.html   修改工作区和暂存区的文件夹的名字
+    </script>
+</body>
+
+</html>

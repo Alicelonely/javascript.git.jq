@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        
+        #box{
+            position: relative;
+            width: 100px;
+            height: 20px;
+            background-color: pink;
+        }
+        #box + div{
+            display: none;
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 300px;
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div></div>
+    <script>
+        let box = document.getElementById("box");
+        let box1 = document.getElementsByTagName("div")[1];
+
+        box.onmouseover = show;            //移入事件
+        box.onmouseenter = show;             //鼠标进入事件
+
+
+        box1.onmouseleave = hide;           //鼠标离开事件  
+        box1.onmouseout = hide;            //移出事件
+
+        box1.ondblclick = hide;         //双击事件
+
+
+
+
+        function show(){
+            box1.style.cssText = "display:block";
+        }
+
+        function hide(){
+            box1.style.cssText = "display:none";
+        }
+
+        
+    </script>
+</body>
+</html>

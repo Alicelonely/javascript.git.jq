@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .wrap ul {
+            width: 300px;
+        }
+
+        .wrap ul li {
+            display: none;
+            width: 300px;
+            height: 50px;
+            border: 1px solid #000;
+            background-color: skyblue;
+        }
+
+        .wrap li.event {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li style="background-color: aqua" class="event"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ul>
+            <li style="background-color:pink" class="event"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ul>
+            <li style="background-color:greenyellow" class="event"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        let oli = document.querySelectorAll("li");
+
+
+
+
+
+        for (let i = 0; i < oli.length; i++) {
+            oli[i].index = true;
+            oli[i].onclick = function () {
+                if (oli[i].index) {
+                    oli[i + 1].style.display = "block";
+                    oli[i + 2].style.display = "block";
+                    oli[i + 3].style.display = "block";
+                    oli[i].index = !oli[i].index;
+                } else {
+                    oli[i + 1].style.display = "none";
+                    oli[i + 2].style.display = "none";
+                    oli[i + 3].style.display = "none";
+                    oli[i].index = !oli[i].index;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

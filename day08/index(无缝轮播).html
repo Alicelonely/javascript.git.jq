@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .banner {
+            position: relative;
+            overflow: hidden;
+            width: 533px;
+            height: 300px;
+            margin: 100px auto;
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: 2px;
+        }
+
+        .banner .imglist {
+            position: absolute;
+            width: 1000%;
+        }
+
+        .banner .imglist li {
+            float: left;
+        }
+
+        .banner .imglist li img {
+            display: block;
+            width: 533px;
+            height: 300px;
+        }
+
+        .banner ul:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .banner .btnlist {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 20px;
+            width: 37%;
+            margin: auto;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, .5);
+        }
+
+        .banner .btnlist span {
+            float: left;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 0 6px;
+            background-color: rgba(255, 255, 255, .5);
+            font-size: 0px;
+            cursor: pointer;
+        }
+
+        .banner .btnlist span.on {
+            position: absolute;
+            left: 0;
+            background-color: #ff0036;
+        }
+
+        .banner .btn span {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 30px;
+            height: 70px;
+            margin: auto;
+            background-color: rgba(0, 0, 0, .5);
+            font-size: 30px;
+            line-height: 70px;
+            color: #fff;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .banner .btn span.next {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <ul class="imglist">
+            <li><img src="../images/6.jpg" alt=""></li>
+            <li><img src="../images/1.jpg" alt=""></li>
+            <li><img src="../images/2.jpg" alt=""></li>
+            <li><img src="../images/3.jpg" alt=""></li>
+            <li><img src="../images/4.jpg" alt=""></li>
+            <li><img src="../images/5.jpg" alt=""></li>
+            <li><img src="../images/6.jpg" alt=""></li>
+            <li><img src="../images/1.jpg" alt=""></li>
+        </ul>
+
+        <div class="btnlist">
+            <span class="on"></span>
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+
+        <div class="btn">
+            <span class="next">></span>
+            <span class="pre">
+                <</span> </div> </div> </body> <script src="../day08/ainmation.js">
+                </script>
+                    <script>
+                        let oBan = document.querySelector(".banner"),
+                            oUl = document.querySelector(".imglist"),
+                            aBtn = document.querySelectorAll(".btn span"),
+                            oBtnList = document.querySelector(".btnlist"),
+                            aSpan = document.querySelectorAll(".btnlist span:not(.on)"),
+                            oSpanOn = document.querySelector(".on"),
+                            len = aSpan.length,
+                            index = 0,
+                            w = 533;
+
+                        oUl.style.left = -w + 'px';
+                        //左按钮
+                        // aBtn[0].onclick = function () {
+                        //     index++;
+                        //     console.log(index);
+                        //     animation(oUl, { left: -w * (index + 1) }, 0.5, function () {
+
+                        //         this.style.left = -w * (index + 1) + "px";
+                        //     });
+
+                        //     if (index >= len) {
+                        //         animation(oSpanOn, {
+                        //             left: 32 * index,
+                        //             opacity: 0
+                        //         }, 0.25, function () {
+                        //             index = 0;
+                        //             this.style.left = 32 * (index - 1) + 'px';
+                        //             animation(oSpanOn, {
+                        //                 left: 32 * index,
+                        //                 opacity: 1
+                        //             }, 0.25)
+                        //         });
+                        //     } else {
+                        //         animation(oSpanOn, {
+                        //             left: 32 * index
+                        //         }, 0.5);
+                        //     }
+
+                        // }
+
+                     
+
+
+                        for (let i = 0; i < 2; i++) {
+                            aBtn[i].index = i;
+                            aBtn[i].onclick = function () {
+                                if (this.index) {
+                                    index--;
+                                } else {
+                                    index++;
+                                }
+
+
+                                animation(oUl, { left: -w * (index + 1) }, 0.5, function () {
+
+                                    this.style.left = -w * (index + 1) + "px";
+                                });
+
+
+
+                                if (index >= len) {
+                                    animation(oSpanOn, { left: 32 * index, opacity: 0 }, 0.25, function () {
+                                        index = 0;
+                                        this.style.left = 32 * (index - 1) + 'px';
+                                        animation(oSpanOn, { left: 32 * index, opacity: 1 }, 0.25)
+                                    });
+                                } else if (index <= -1) {
+                                    animation(oSpanOn, { left: 32 * index, opacity: 0 }, 0.25, function () {
+                                        index = len - 1;
+                                        this.style.left = 32 * (index - 1) + 'px';
+                                        animation(oSpanOn, { left: 32 * index, opacity: 1 }, 0.25)
+                                    });
+                                } else{
+                                    animation(oSpanOn, { left: 32 * index }, 0.5);
+                                }
+
+
+
+                            }
+                        }
+
+
+
+                        oBtnList.addEventListener('click', function (e) {
+                            e = e || window.event;
+                            if (e.target.nodeName == 'SPAN') {
+                                index = e.target.innerHTML;
+                                animation(oSpanOn, { left: index * 32 }, 0.5);
+                                animation(oUl, { left: -w * (+index + 1) }, 0.5)
+                            }
+                        }, false)
+
+
+                    </script>
+
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>全国最帅</title>
+  <style type="text/css">
+  *{
+	margin:0;
+	padding:0;
+  }
+  ul li{
+	list-style:none;
+  }
+  body{
+	font-family:"微软雅黑";
+	background-color:#000;
+  }
+  .pics::after{
+	content:"";
+	display:block;
+	position:relative;
+	width:100%;
+	height:100%;
+	box-shadow:0 0 8px #fefefe,
+						0 0 15px #fff;
+  }
+  .pics{
+	width:1000px;
+	height:560px;
+	margin:100px auto;
+	box-shadow:0 0 8px #fefefe,
+						0 0 15px #fff;/* 发光效果 */
+  }
+.pics .b-time{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:777px;
+	opacity:0;
+	
+}
+.navt{
+	transition:.6s;
+}
+ .pics li{
+	float:left;
+	height:100%;
+ }
+ .pics li input,.b-item{
+	position:relative;
+	display:block;
+	width:100px;
+	height:100%;
+ }
+  .pics li input{
+	z-index:3;
+	opacity:0;
+  }
+.b-item{
+	z-index:2;
+	top:-100%;
+	color:#fff;
+	background:no-repeat center top/auto 100%;
+	overflow:hidden;
+	}
+.b-item p{
+	padding:20px;
+	width:62px;
+	height:520px;
+	text-align:center;
+	font-size:35px;
+	background:rgba(0,0,0,.3);
+}
+ .pics li:nth-child(1) .b-item,
+  .pics li:nth-child(1) .b-time
+ {
+	background-image:url("images/1.jpg")
+	} .pics li:nth-child(2) .b-item,
+  .pics li:nth-child(2) .b-time
+ {
+	background-image:url("images/2.jpg")
+	}
+	 .pics li:nth-child(3) .b-item,
+  .pics li:nth-child(3) .b-time
+ {
+	background-image:url("images/3.jpg")
+	}
+	 .pics li:nth-child(4) .b-item,
+  .pics li:nth-child(4) .b-time
+ {
+	background-image:url("images/4.jpg")
+	}
+	 .pics li input:checked + .b-item{
+		width:700px;
+	 }
+	 .pics li input:checked + .b-item p{
+		margin-left:-100px;
+	 }
+ .pics li input:checked + .b-item + .b-time{
+	opacity:1;
+ }
+  </style>
+ </head>
+ <body>
+			<div class="banner">
+				<ul class="pics">
+					<li>
+						<input type="radio" name="banner" checked="checked"  />
+						<div class="b-item navt">
+							<p class="navt">致力核能</p>
+						</div>
+						<div class="b-time navt">
+						</div>
+					</li>
+					<li>
+						<input type="radio" name="banner" />
+						<div class="b-item navt">
+							<p class="navt">天赋启动</p>
+						</div>
+						<div class="b-time navt">
+						</div>
+					</li>
+					<li>
+						<input type="radio"  name="banner" />
+						<div class="b-item navt">
+							<p class="navt">纪元开启</p>
+						</div>
+						<div class="b-time navt">
+						</div>
+					</li>
+					<li>
+						<input type="radio" name="banner"  />
+						<div class="b-item navt">
+							<p class="navt">风暴捕抓</p>
+						</div>
+						<div class="b-time navt">
+						</div>
+					</li>
+				</ul>
+			</div>
+ </body>
+</html>

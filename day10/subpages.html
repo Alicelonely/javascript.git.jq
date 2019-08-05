@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    li{
+        list-style: none;
+    }
+    .wrap{
+        width: 205px;
+        height: 165px;
+        margin: 100px auto;
+        background: pink;
+    }
+    .wrap ul li{
+        text-align: right;
+    }
+    </style>
+</head>
+<body>
+        <div class="wrap">
+            <ul>
+                <li style="text-align: center;"></li><h2>送货地址确认</h2></li>
+                <li><span>省份</span><input type="text" class="address"></li>
+                <li><span>城市</span><input type="text" class="address"></li>
+                <li><span>区</span><input type="text" class="address"></li>
+                <li><span>街道</span><input type="text" class="address"></li>
+                <li><span>门号</span><input type="text" class="address"></li>
+                <li style="text-align: center;"><form action="practice1.html"><input type="submit" value="确认" onclick="myads()"></form> </li>
+            </ul>
+        </div>
+</body>
+<script>
+    let ipt = document.querySelectorAll(".address");
+
+    function myads(){
+        let ads="";
+        for (let i = 0; i < ipt.length; i++) {
+           if(ipt[i].value!= ""){
+                window.opener.document.querySelector(".text1").value += ipt[i].value;
+           }
+            
+        }
+        close();
+    }
+
+</script>
+</html>

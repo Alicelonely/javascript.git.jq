@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+
+<script src="../jQuery/jquery-3.4.1.min.js">
+</script>
+<script>
+
+    //1.git -a -m 'change index.html index.js age'
+    //直接提交到仓库里面
+
+    //2.版本回复
+    //上一个暂存区替换工作区的
+    //git checkout -- index.html
+
+    //工作区提交到暂存区是add 暂存区提交到仓库是commit
+    //上一个暂存区替换工作区的是checkout
+
+
+    //git log   查看所有的版本      git status 查看状态
+    
+    //git reset HEAD~       仓库回退到上一个版本,用这个版本覆盖暂存区的版本     此时并不工作区的内容
+
+    //git reset --mixed HEAD~   将HEAD指针指向上一个快照    将此时的快照滚回到暂存区
+
+    //git reset --soft HEAD~    只在仓库里面回退    软回退
+
+    //git reset --hard HEAD~     仓库回退到上一个版本,用这个版本覆盖暂存区的版本 ,然后在滚回工作区
+
+    //git reset --soft HEAD~10    回退到前10个版本
+
+    //git reset --hard id名     回退到id名那个版本
+
+    //通过id来更改 就是黄色字体的conmmit后面的就是id,只复制5,6位就可以了
+
+    //写HEAD和写id是一样的
+
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+            <input type="button" value="打开新页面" id="ipt">
+<script>
+    let flag;
+
+    ipt.onclick = function(){
+        flag = confirm('是否打开新页面');
+
+        if(flag){
+            open("subpages.html", "", "toolbars=0,location=1,statusbars=0,menubars=0,width=736,height=474,scrollbars=0");   
+        }else{
+            close();
+        }
+    }
+</script>
+</body>
+</html>         

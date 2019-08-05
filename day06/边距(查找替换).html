@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            width: 1000px;
+            height: 500px;
+            border: 1px solid #bbb;
+            margin: 100px auto;
+        }
+
+        #wrap .top {
+            width: 100%;
+            height: 10%;
+            text-align: center;
+            line-height: 50px;
+            border-bottom: 1px solid #bbb;
+        }
+
+        #wrap input {
+            margin-left: 30px;
+        }
+
+        #wrap .top .btu {
+            width: 300px;
+            height: 20px;
+        }
+
+        #wrap .top .name {
+            width: 80px;
+            height: 30px;
+        }
+
+        #wrap .bottom p {
+            padding: 20px;
+        }
+
+        #wrap .bottom p span {
+            color: #f60;
+            font-size: 20px;
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="top">
+            <input type="text" class="btu entry">
+            <input type="text" class="btu outinput">
+            <input type="button" value="查找" class="name lookup">
+            <input type="button" value="替换" class="name Replace">
+        </div>
+        <div class="bottom">
+            <p>
+                    苍井空，1983年11月11日出生于日本东京。日本女演员、歌手，日本女子组合惠比寿麝香葡萄的初代首领，现成员、OG首领。
+                    21世纪初，以泳装写真模特身份出道，2002年，与AliceJapan公司签约，成为AV女演员。因其“童颜巨乳”的特色，开始获得人气；2003年开始，连续两年获得日本《VideoBoy》杂志年度性感女艺人第一名， [1]  2003年，开始参加一般电视戏剧及综艺节目的演出。 [1]  2004年11月，移籍到S1，转型为杂志模特、电影演员。
+                    2017年，宣布退出AV女演员行业。2018年1月1日，苍井空发微博晒出婚戒，宣布已结婚。 [2]  2018年12月11日，苍井空公布了自己已经怀孕五个月的喜讯。
+            </p>
+        </div>
+    </div>
+</body>
+<script>
+    let lookup = document.querySelector(".lookup"),
+        Replace = document.querySelector(".Replace"),
+        op = document.querySelector("p"),
+        entry = document.querySelector(".entry"),
+        output = document.querySelector(".outinput"),
+        text = op.innerHTML;
+        //text保存的都是原文本,只能有一种字体发生改变
+
+    lookup.onclick = ()=>{
+        
+        let val = entry.value.trim();
+        if (val && text.indexOf(val) > -1) {
+            //一定有字符
+            let arr = text.split(val);
+            let str = arr.join(`<span>${val}</span>`);
+            op.innerHTML = str;
+        }
+
+    }
+
+    Replace.onclick = ()=>{
+        
+        let val = entry.value.trim();
+        let replaceText = output.value;
+        if (val && text.indexOf(val) > -1) {
+           
+            let arr = text.split(val);
+            let str = arr.join(replaceText);
+            op.innerHTML = str;
+            text = text.split(val).join(replaceText);
+        }
+
+    }
+
+
+   
+</script>
+
+</html>

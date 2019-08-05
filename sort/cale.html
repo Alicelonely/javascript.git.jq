@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="input">
+
+    <select id="hello" onchange="getContent(this.options[this.selectedIndex].text)">
+
+        
+            <option ></option>
+            <option value ="+">+</option>
+            <option value ="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+    <lect>
+    <input type="text" id="input1">
+
+    <input type="text" id="input2">
+
+    <button id="btu">计算 <tton>
+
+    <script>
+        
+
+        function cale(a,b,n){
+            
+            switch(n){
+                case "+":
+                    return (Number.parseInt(a) +Number.parseInt(b));
+                break;
+                case "-":
+                    return a - b;
+                break;
+                case "*":
+                    return a * b;
+                break;
+                case "/":
+                    return a / b;
+                break;  
+                
+            }
+
+        }
+        
+
+
+        
+        function getContent(content){
+
+               var q1 = document.getElementById("input").value
+               var q2 = document.getElementById("input1").value
+               document.getElementById("input2").value = cale(q1,q2,content);
+        }
+
+
+
+    </script>
+</body>
+<ml>
+

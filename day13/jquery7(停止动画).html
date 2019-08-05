@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="../jQuery/jquery-3.4.1.min.js">
+    </script>
+    <script>
+    //stop()
+    //stop()    可以传递的参数  stop()  stop(true)  stop(true,true)     stop(false,true)
+    //stop()  相当于(false,false)              清除当前动画,运动的元素停止在停止动画的位置,不清除动画队列     
+    //stop(true)   相当于(true,false)         清除当前动画,运动的元素停止在停止动画的位置,清除后面的所有的没有运动的动画
+    //stop(true,true)                        清除当前动画,运动的元素停止在动画的结束位置,清除后面的所有的没有运动的动画
+    //stop(true,false)                      清除当前动画,运动的元素停止在动画的结束位置,不清除动画队列   
+
+
+    //stop()    
+    //第一个参数是问你要不要清除动画队列,true清除动画队列,false是清除动画队列
+    //第二个参数是问你停止了当次动画,动画停留在什么位置     true表示停留在终点位置,false表示停留在当前位置
+
+
+    
+
+    //瞬间完成所有的动画
+    //2.finish()        瞬间完成动画队列的所有动画
+
+    //3.delay()     延迟动画执行        里面传递参数里面是时间参数
+
+    //4.is()        判断当前元素有没有在进行动画,是返回true不是返回false
+    $(this).is(':animated')
+
+
+    </script>
+</body>
+
+</html>

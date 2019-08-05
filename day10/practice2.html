@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 200px;
+            height: 200px;
+            color: red;
+            text-align: center;
+            line-height: 200px;
+            margin: 100px auto;
+            font-size: 20px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        ☆★☆今日特价☆★☆
+    </div>
+    <script>
+        let wrap = document.querySelector(".wrap");
+        let flag = true;
+       
+
+
+        setInterval( function (){
+
+
+            if(flag){
+
+                wrap.innerHTML = `★☆★今日特价★☆★`
+                flag = false;
+            }else{
+                wrap.innerHTML = `☆★☆今日特价☆★☆`
+                flag = true;
+            }
+        },300);
+    </script>
+</body>
+
+</html>

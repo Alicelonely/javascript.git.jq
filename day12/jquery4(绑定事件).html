@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //绑定事件      点击事件
+        click(fn);
+        $("p").click(function (){
+            console.log(1)
+        })
+        //鼠标移入移出onmouseenter  onmouseleave
+        click(fn);
+        $("p").onmouseenter(function (){
+            console.log(1)
+        })
+
+
+        
+        //on()      
+        $("p").on('click',function (){
+            console.log(1)
+        })
+
+
+
+
+
+
+        //3.解除事件    off
+        $("p").off('click')
+
+
+        //4.只绑定一次事件
+        $("p").one('click',function (){
+            console.log(1)
+        })
+
+
+        //jquery提供的移入移出   hover()        传递两个参数    一个移入时候触发的函数一个移出的时候触发
+        $("p").hover(function(){
+
+        },function(){
+
+        })
+
+        //事件对象  事件源
+        $('body').click(function(ev){
+            console.log(ev.target)
+            $(ev.target).css()
+        })
+        //原生js对象
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+ <meta charset="UTF-8"> 
+ <title>Insert title here</title> 
+ <style type="text/css"> 
+	table{ 
+		border-collapse: collapse; 
+	} 
+	table td { 
+		border-top: 0; 
+		border-right: 3px solid red; 
+		border-bottom: 3px solid red; 
+		border-left: 0; 
+	}  
+	/* css3样式，获取表格的最后一行 */
+	table tr:last-child td{
+		border-bottom: 0; 
+	}
+	/* css3样式，获取表格的最后一列 */
+	table tr td:last-child{
+		border-right: 0; 
+	}
+ </style> 
+</head> 
+<body> 
+ <table> 
+  <tr> 
+    <td>姓名</td> 
+    <td>年龄</td> 
+	<td>籍贯</td> 
+	<td>出生年月</td> 
+	<td>学历</td> 
+	<td>外语程度</td> 
+  </tr> 
+  <tr> 
+	<td>111</td> 
+	<td>222</td> 
+	<td>333</td> 
+	<td>444</td> 
+	<td>555</td> 
+	<td>666</td> 
+  </tr> 
+  <tr> 
+	<td>11122</td> 
+	<td>222111</td> 
+	<td>333444</td> 
+	<td>444555</td> 
+	<td>555555</td> 
+	<td>666777</td> 
+  </tr> 
+ </table> 
+</body> 
+</html> 

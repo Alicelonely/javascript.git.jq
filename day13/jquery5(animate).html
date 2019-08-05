@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="../jQuery/jquery-3.4.1.min.js">
+    </script>
+    <script>
+        //动画      参数:   json对象,动画时间,运行完的回调函数(可以不写)
+        $('div').animate({
+            'margin-left': 200
+        }, 2000,function(){
+            $(this).css('background-color','red')
+        })
+
+        //动画排列      不同的动画会排列    运动完一个再运动另一个      希望动画同时执行那就可以把动画写在一个json里面
+        $('div').animate({'margin-left': 200}, 2000,)
+        $('div').animate({'margin-top': 200}, 2000,)
+
+        $('div').animate({'margin-left': 200,'margin-top': 200}, 2000,)
+
+        //动画队列是发生在同一个元素身上,不同的元素不会排队
+
+    </script>
+</body>
+
+</html>

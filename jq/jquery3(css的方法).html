@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    #box{
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+    </style>
+</head>
+<body>
+    <div id="box" class="wrap" style="padding: 10px"></div>
+<script src="../jQuery/jquery-3.4.1.min.js"></script>
+<script>
+    //css()方法
+    //1.获取元素的样式
+    // console.log( $("div").css('background-color'));
+    //2.设置新的值
+    // $("div").css('background-color',"red")
+    //3.设置多个
+    //  $("div").css({
+    //      "background-color":"green",
+    //      "width":"200px"
+    //  })
+
+     //特殊设置样式
+     $("div").click(function(){
+        $(this).css('width',"+=10")
+     })
+
+     //attr()
+     //1.只能获取元素身上的第一个
+     //2.attr可以获取自定义属性
+    //  $("div").attr("date-title","hahha")
+    //  $("div").attr("class","hahha")
+     //3.删除属性(把所有获取到的元素都删除)  除了获取之外,设置和删除都是所有元素
+    //  $("div").removeAttr("class")    
+
+     //class类名  如果有相同的类名就不会添加
+    //  $("div").addClass("weiwei")
+    //  $("div").removerClass("weiwei")
+
+
+    //切换class类名 toggleClass
+    $("div").click(function(){
+        $(this).toggleClass("hr")
+     })
+
+
+
+
+
+    //节点的值
+    //不传参数就是获取值,获取只能获取元素的第一个
+    $("div").html()
+    // 添加值就是传入字符串参数
+    $("div").html("<h3>dongsheng</h3>")
+
+
+    //.text() = innerTEXT
+    //.val() = value
+
+     
+</script>
+</body>
+</html>

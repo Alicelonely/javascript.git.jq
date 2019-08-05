@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+
+<script src="../jQuery/jquery-3.4.1.min.js">
+</script>
+<script>
+
+    //第一类查找
+    //1.子元素节点只获取子元素节点,不获取孙子元素节点 
+    //.children()获取所有的子元素节点  不用是同一类的标签
+    $(".box").children().css()
+
+    //2.在子元素中找特定的子元素    里面可以传入选择器:tagName,className,id,筛选器:  (:odd所有的奇数  :even所有的偶数  是下标的奇数和偶数)  p:even   这代表p标签里面的偶数 
+    $(".box").children(".wuwei").css()
+
+
+
+    //第二类查找  find()    查找所有的后代元素,而且必须传参数包括孙子
+    $(".box").find()
+
+
+
+
+    //查找父元素    
+    $('p').parent()
+    //找所有的祖先元素      也可以给parents传参数,找特定的祖先元素,不能找到爸爸的叔叔  
+    $('p').parents()
+
+
+    //查找兄弟元素  找所有的[亲]兄弟元素不包括自己
+    $('p').siblings()
+    //找前一个兄弟和后一个兄弟
+    $('p').prev()
+    $('p').next()
+    //找上一群兄弟和下一群兄弟
+    $('p').prevAll()
+    $('p').nextAll()
+
+
+
+
+    //找定位父级,一直向上找,找到有定位的一个父级为止
+    $("p").offsetParent()
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</script>
+</body>
+</html>

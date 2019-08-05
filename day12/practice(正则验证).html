@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .box {
+            width: 800px;
+            height: 300px;
+            margin: 100px auto;
+
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+        }
+
+        .wrap ul {
+            margin: 0 0 0 50px;
+        }
+
+        .wrap ul li {
+            line-height: 30px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="../images/js练习图片/register_logo.gif" alt="">
+        <div class="wrap">
+            <ul>
+                <li>通行证用户名:<input type="text" onblur="verUser()" onfocus="remUser()" class="username">@163.com<span
+                        class="remind"></span></li>
+
+                <li>登录密码:<input type="password" class="pasword" onblur="verPassword()" onfocus="pasUser()"><span
+                        class="pasremind"></span></li>
+
+                <li>重复登录密码:<input type="password" onblur="verPasses()" class="passesword"><span class="pases"></span>
+                </li>
+
+
+                <li>性别:<input type="radio" name="sex">男<input type="radio" name="sex" >女</li> 
+
+                <li>真实姓名:<input type="text"
+                         class="real" onblur=" verReal()" onfocus="nicUser()"><span class="nicPases"></span></li>
+
+
+                
+                
+                         <li>昵称:<input type="text"  class="nick" onfocus="nikUser()" onblur=" verNick()"><span class="pasNic"></span></li>
+
+
+                <li>关联手机号:<input type="text" onblur="verPhone()" class="phone"><span class="pasphone"></span></li>
+                <li>保密邮箱:<input type="text" class="mail" onblur="verMail()"><span class="pasmail"></span></li>
+                <li><input type="image" src="../images/js练习图片/button.gif"></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../jQuery/jquery-3.4.1.min.js">
+    </script>
+    <script>
+
+
+        function remUser() {
+            $(".remind").html(`4到16位字母`).css({
+                'background-color': '#ffffda',
+                'font-size': '12px',
+                'border': '1px solid #ffd00b'
+            })
+        }
+
+        function pasUser() {
+            $(".pasremind").html(`最少6位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符`).css({
+                'background-color': '#ffffda',
+                'font-size': '12px',
+                'border': '1px solid #ffd00b'
+            })
+        }
+
+        function nicUser() {
+            $(".nicPases").html(`1.可以是中文
+                            2.可以是英文，允许输入点（英文名字中的那种点）， 允许输入空格
+                            3.中文和英文不能同时出现
+                            4.长度在20个字符以内`).css({
+                'background-color': '#ffffda',
+                'font-size': '12px',
+                'border': '1px solid #ffd00b'
+            })
+        }
+
+        function nikUser(){
+            $(".pasNic").html(`不能包含特殊字符，可以是汉字，数字和字母。汉字可以为2-6位，字母或数字可以为4-12位`).css({
+                'background-color': '#ffffda',
+                'font-size': '12px',
+                'border': '1px solid #ffd00b'
+            })
+        }
+
+
+        function verUser() {
+            let rule = /^[a-zA-Z]{3,15}$/;
+           
+                let a = rule.test($(".username").val());
+                fw(".username",a,".remind")
+
+        }
+
+       
+        function verPassword() {
+            let rule = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,}$/;
+            
+                let a = rule.test($(".pasword").val());
+              
+           fw(".pasword",a,".pasremind")
+        }
+
+        //验证两次密码是否正确
+        function verPasses() {
+          fw(".password",$(".passesword").val()!=""&& $(".pasword").val() !=""&& $(".pasword").val() ==$(".passesword").val() ,".pases")
+        }
+
+        //验证真实姓名
+        function verReal() {
+            
+                let rule =/^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\.\s]{1,20})$/
+                let a = rule.test($(".real").val());
+                fw(".real",a,".nicPases")
+        }
+        //验证昵称
+        function verNick(){
+            
+                let rule =/^[\u4E00-\u9FA5A-Za-z0-9_]+$/
+                let a = rule.test($(".nick").val());
+                fw(".nick",a,".pasNic")
+        }
+        //验证手机号
+        function verPhone(){
+            let rule = /^1([38]\d|5[0-35-9]|7[3678])\d{8}$/;
+            let a = rule.test($(".phone").val())
+            fw(".phone",a,".pasphone")
+        }
+        //验证邮箱
+        function verMail(){
+            let rule = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+            let a = rule.test($(".mail").val())
+            fw(".mail",a,".pasmail")
+        }
+
+
+        
+        function fw(target,flag,spann){
+            if ($(target).val() == "") {
+                $(spann).html(`不能为空`).css({
+                    'background-color': '#ffffda',
+                'font-size': '12px',
+                'border': '1px solid #ffd00b'
+                })}else{
+                    
+            if(flag){
+                $(spann).html(`<img src='../images/js练习图片/li_ok.gif'>输入正确`).css({
+                        'background-color': '#e6fee4',
+                        'font-size': '12px',
+                        'border': '1px solid #59d559'
+                    })
+            }else{
+                $(spann).html(`<img src='../images/js练习图片/li_err.gif'>输入错误`).css({
+                    'background-color': '#ff2e5',
+                        'font-size': '12px',
+                        'border': '1px solid #ffb095'
+                    })
+                }
+            }
+          
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            width: 1000px;
+            height: 900px;
+            margin: 50px auto;
+        }
+
+        #wrap #table {
+            width: 100%;
+            border: 1px solid #d64261;
+        }
+
+        #wrap #table thead td {
+            padding: 20px 50px;
+            background-color: #d64261;
+        }
+
+        #wrap #table td {
+            text-align: center;
+        }
+
+        #wrap #table tbody td {
+            padding: 20px 0;
+        }
+
+        #wrap #table tbody .btn {
+            outline: none;
+            border: none;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            background-color: #dbdbd9;
+        }
+
+        #wrap #table tbody .content {
+            display: inline-block;
+            margin: 0 20px;
+            width: 70px;
+            height: 25px;
+            border: 1px solid #dbdbd9;
+        }
+
+        #wrap #table tr {
+            margin-top: 20px;
+        }
+
+        #wrap #table tfoot tr td {
+
+            text-align: right;
+            padding: 10px 70px;
+        }
+
+        #wrap #table tfoot .hr {
+            color: yellowgreen;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <table id="table" border="1" cellspacing="0">
+            <thead>
+                <tr>
+                    <td>商品</td>
+                    <td>单价</td>
+                    <td>数量</td>
+                    <td>小计</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>图片</td>
+                    <td class="danjia">8</td>
+                    <td>
+                        <input type="submit" class="btn jian" value="-">
+                        <span class="content">0</span>
+                        <input type="submit" class="btn jia" value="+">
+                    </td>
+                    <td class="xiaoji">0</td>
+                </tr>
+                <tr>
+                    <td>图片</td>
+                    <td class="danjia">10</td>
+                    <td>
+                        <input type="submit" class="btn jian" value="-">
+                        <span class="content">0</span>
+                        <input type="submit" class="btn jia" value="+">
+                    </td>
+                    <td class="xiaoji">0</td>
+                </tr>
+                <tr>
+                    <td>图片</td>
+                    <td class="danjia">12.5</td>
+                    <td>
+                        <input type="submit" class="btn jian" value="-">
+                        <span class="content">0</span>
+                        <input type="submit" class="btn jia" value="+">
+                    </td>
+                    <td class="xiaoji">0</td>
+                </tr>
+                <tr>
+                    <td>图片</td>
+                    <td class="danjia">23</td>
+                    <td>
+                        <input type="submit" class="btn jian" value="-">
+                        <span class="content">0</span>
+                        <input type="submit" class="btn jia" value="+">
+                    </td>
+                    <td class="xiaoji">0</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+
+
+                    <td colspan="4" text-align="right">
+                        <p>已选中商品:&nbsp;<span
+                                class="hr num">0</span>&nbsp;个&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计费用$&nbsp;<span
+                                class="hr money">0</span>&nbsp;</p>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+<script>
+    let danjia = document.querySelectorAll(".danjia"),
+        jia = document.querySelectorAll(".jia"),
+        jian = document.querySelectorAll(".jian"),
+        xiaoji = document.querySelectorAll(".xiaoji"),
+        content = document.querySelectorAll(".content"),
+        num = document.querySelector(".num"),
+        money = document.querySelector(".money");
+
+
+    function fn(idx) {
+        //计算每个的小计
+        let count = 0;
+        let countmoney = 0;
+        xiaoji[idx].innerHTML = danjia[idx].innerHTML*content[idx].innerHTML;
+        for(let i = 0;i<jia.length;i++){
+            count += content[i].innerHTML*1;
+            countmoney += xiaoji[i].innerHTML*1;
+        }
+        num.innerHTML = count;
+        money.innerHTML = countmoney;
+    }   
+
+    for (let i = 0; i < jia.length; i++) {
+
+        jia[i].onclick = function () {
+            content[i].innerHTML++;
+            fn(i);
+        }
+
+        jian[i].onclick = function () {
+            let danjiage = content[i].innerHTML;
+            danjiage--;
+            if (danjiage < 0) {
+                content[i].innerHTML = 0;
+            } else {
+                content[i].innerHTML = danjiage;
+                fn(i);
+                
+            }
+
+        }
+    }
+
+</script>
+
+</html>

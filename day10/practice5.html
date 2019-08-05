@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="删除" id="ipt">
+    <input type="button" value="取消删除" id="ipt1">
+    <br>
+    <textarea name="" id="te" cols="30" rows="10">
+            苍井空，1983年11月11日出生于日本东京。日本女演员、歌手，日本女子组合惠比寿麝香葡萄的初代首领，现成员、OG首领。
+            21世纪初，以泳装写真模特身份出道，2002年，与AliceJapan公司签约，成为AV女演员。因其“童颜巨乳”的特色，开始获得人气；2003年开始，连续两年获得日本《VideoBoy》杂志年度性感女艺人第一名， [1]  2003年，开始参加一般电视戏剧及综艺节目的演出。 [1]  2004年11月，移籍到S1，转型为杂志模特、电影演员。
+            2017年，宣布退出AV女演员行业。2018年1月1日，苍井空发微博晒出婚戒，宣布已结婚。 [2]  2018年12月11日，苍井空公布了自己已经怀孕五个月的喜讯。
+        
+    </textarea>
+    <script>
+        ipt.onclick = function(){
+
+
+                        
+                        let timer = setInterval(function(){
+                        
+                            te.innerHTML = ''
+                        } , 3000)
+
+
+
+                        ipt1.onclick = function(){
+                                clearInterval(timer);
+                            }
+        }
+
+
+    </script>
+</body>
+
+</html>

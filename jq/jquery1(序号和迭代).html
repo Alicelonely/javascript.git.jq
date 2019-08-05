@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+
+<script src="../jQuery/jquery-3.4.1.min.js">
+</script>
+<script>
+    //1.序
+    //$('div p').eq()   eq是根据选择器选中的元素决定的
+
+    //2.index()     返回亲兄弟的排名
+    //不是亲兄弟不会获取
+    
+    //3.迭代
+    //each()       相当于for循环里面的i,结束条件就是p.length
+    $("p").each(function(i){})
+
+    //4.获取元素的长度
+    //size()方法    length属性
+    //这两个值永远相等,但是size()只能在1.8以下版本使用
+
+
+    //5.get()方法   它和eq方法一样
+    //get()返回的是原生js的方法     eq返回的是jq的对象
+
+    $("p").eq(2).css(
+        "background-color","red"
+    )           //jq的方法
+    $("p").eq(2)[0].style.backgroundColor = 'red'       //jq转原生
+
+    $("p").get(2).style.backgroundColor = 'red'     //get方法
+
+    $($("p").get(2)).style.backgroundColor = 'red'      //原生转jq
+
+
+    //原生js对象转为jq对象$()
+    //jq对象转原生js对象$()[num]    也可以通过[num]
+
+    
+
+
+</script>
+</body>
+</html>

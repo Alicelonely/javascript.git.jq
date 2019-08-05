@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .banner {
+            width: 1000px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 1000px;
+        }
+
+        .wrap span {
+            display: inline-block;
+            margin-left: 10px;
+            background-color: rgba(255, 25, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <input type="button" value="开始">
+        <div class="wrap">
+
+        </div>
+    </div>
+    <script>
+        let wrap = document.querySelector(".wrap");
+        let ipt = document.querySelector("input");
+        let Rnum, Rnum1, Rnum2, Rnum3;
+        let flag = true;
+        let timer;
+
+
+        ipt.onclick = function() {
+
+            if (flag) {
+
+                timer = setInterval(function () {
+
+
+
+                    Rnum = parseInt(Math.random() * 255);
+                    Rnum1 = parseInt(Math.random() * 255);
+                    Rnum2 = parseInt(Math.random() * 255);
+                    Rnum3 = parseFloat(Math.random().toFixed(1));
+                    wrap.innerHTML += `<span style="background-color:rgba(${Rnum},${Rnum1},${Rnum2},${Rnum3});">rgba(${Rnum},${Rnum1},${Rnum2},${Rnum3})</span>`
+                   
+                }, 500)
+
+                ipt.value = "暂停";
+                flag = false;
+
+            } else {
+
+
+                clearInterval(timer);
+                ipt.value = "开始";
+                flag = true;
+
+                
+            }
+
+        }
+    </script>
+</body>
+
+
+</html>

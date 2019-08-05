@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+
+<script src="../jQuery/jquery-3.4.1.min.js">
+</script>
+<script>
+
+    //1.内置()  show()就是给元素添加一个display:block  hide()  就是给元素添加一个display:none    toggle()   显示和消失切换
+    
+    //如果希望有动画效果就传入时间参数,第二个参数是回调函数
+    //以自己设置的样式为起点,以所有的宽高margin padding作为终点运动     最后动画完成以后添加display:none;
+    $(".box").show(1000,function(){
+    })
+
+
+
+    //2.卷帘式运动      slideDown()     slideUp()       slideToggle()       只发生上下的滑动      等价于
+    //第一个参数是时间,第二个参数是回调函数
+    $(".box").slideDown(1000,function(){
+    })
+
+
+
+    //3.淡入淡出    fadeIn()    fadeOut()   fadeTo()必须有参数   两个参数一个是时间一个是运动到什么时候停止    fadeToggle()    
+    //除了fadeTo()之外其他的都是两个参数,一个是时间,一个是回调函数
+    $(".box").fadeIn(1000,function(){})
+</script>
+</body>
+</html>
