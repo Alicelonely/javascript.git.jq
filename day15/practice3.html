@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body style="line-height: 50px;">
+    <h2>淘乐,发现更多生活,<span style="color:#ff2551">快乐</span>就在你身边...</h2>
+    <h2 style="color: #009500">近期热门.........&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(更多)</h2>
+    <p>言语之庭</p>
+    <p>斯托克</p>
+    <P class="test">宿醉</P>
+    <p>巨人捕手杰克</p>
+    <p>副作用</p>
+    <p>血肉之躯</p>
+    <p>7号房的礼物</p>
+    <P>惊声尖叫</P>
+    <h4 style="color:#ff2551">更多排名</h4>
+    <script src="../jQuery/jquery-3.4.1.min.js">
+    </script>
+    <script>
+        $("p:even").css({ "background-color": "#ccc" });
+        $("p.test").css({ "background-color": "#ff99cc" });
+        $("p:gt(4)").hide();
+      
+        let flag = true;
+
+        $("h4").click(() => {
+            if (flag) {
+                $("p:gt(4)").show();
+                flag = !flag;
+            } else {
+                $("p:gt(4)").hide();
+                flag = !flag;
+            }
+        })
+    </script>
+</body>
+
+</html>

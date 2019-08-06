@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+        <img src="../images/非诚勿扰img/text.gif" alt=""><br>
+    登录<img src="../images/非诚勿扰img/iocns.gif">
+<script src="../jQuery/jquery-3.4.1.min.js">
+</script>
+<script>
+    $('img').eq(0).hide();
+    $('img').eq(1).click(()=>{
+        $('img').eq(0).show().click(()=>{
+            $('img').eq(0).hide();
+        })
+
+    })
+</script>
+</body>
+</html>
