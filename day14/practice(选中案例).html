@@ -27,13 +27,13 @@
         }
 
         .sign {
-            /* display: none; */
+            display: none;
             position: relative;
             width: 980px;
             height: 560px;
             border: 3px solid #ddd;
             background-color: #fff;
-            margin: 100px auto 0;
+            margin: -40px auto 0;
         }
 
         .sign .title {
@@ -563,29 +563,37 @@
         })
 
         //显示每个模块
-        for (let i = 0; i < $('.sign .content .left li').length; i++) {
+        let $Lli = $('.sign .content .left li');
+        let $Rli =  $(".sign .content .right li");
+        for (let i = 0; i < $Lli.length; i++) {
 
-            $('.sign .content .left li').eq(i).mouseenter(() => {
+            $Lli.eq(i).mouseenter(() => {
 
 
-                $(".sign .content .right li").eq(index).removeClass('on');
-                $(".sign .content .left li").eq(index).removeClass('on');
+                $Rli.eq(index).removeClass('on');
+                $Lli.eq(index).removeClass('on');
                 index = i;
-                $(".sign .content .left li").eq(index).addClass('on');
-                $(".sign .content .right li").eq(index).addClass('on');
+                $Lli.eq(index).addClass('on');
+                $Rli.eq(index).addClass('on');
 
             })
         }
 
+
+
+
         //点击图片时切换路径
-        $('.sign .content .right li .cever a').attr('flag', true);
-        for (let k = 0; k < $('.sign .content .right li .cever a').length; k++) {
-            let $a = $('.sign .content .right li .cever a').eq(k);
+        let $ab = $('.sign .content .right li .cever a');
+        $ab.attr('flag', true);
+        for (let k = 0; k < $ab.length; k++) {
+            let $a = $ab.eq(k);
             $a.click(function () {
                 if ($a.attr('flag') == "true") {
                     if ($('.sign .selected p').children('span').length - 1 >= 4) {
+                        return;
                         let $span = $('<span><span>').css({ 'color': 'red', 'font-weight': '900' }).text('眼瞎吗,没看见只能选五项');
-                        $('.sign .title').append($span);
+                            $('.sign .title').append($span);
+                            
                     } else {
                         let $span = $('<span><span>').css({ 'background': 'url("../招聘网站职位选择/images/select111.png") no-repeat' }).text($a.text());
                         $span.click(function () {
@@ -620,16 +628,6 @@
 
 
 
-
-
-
-        for (let j = 0; j < $('.sign .selected p span').length; j++) {
-            console.log(1)
-            $('.sign .selected p span').bind("click", function () {
-                $(this).remove();
-            });
-
-        }
 
 
 
