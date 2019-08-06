@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .left {
+            display: inline-block;
+            line-height: 80px;
+        }
+
+        .right {
+            margin-left: 10px;
+            margin-top: 20px;
+            line-height: 25px;
+            display: inline-block;
+        }
+
+        .red1{
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="left" style="width: 150px">
+            <img src="../images/非诚勿扰img/pic.gif" alt=""> <br> <img src="../images/非诚勿扰img/col.gif" class="collec"
+                alt="">
+        </div>
+        <div class="right">
+            <h2 style="color: blue">非诚勿扰(共36集)</h2>
+            <p><span class="red1">主演:</span>苏有朋/秦岚/博艺伟等</p>
+            <p><span class="red1">导演:</span><span class="weight1">赖水清</span></p>
+            <p><span class="red1">标签:</span><span class="gbcolr">苏有朋</span>国产电视剧<span class="gbcolr">2013</span>连续剧</p>
+            <p><span class="red1">剧情:</span>当代都市,大龄女刘琳,杨阳都在寻找着<br>
+                自己的如意郎君.刘琳偶遇炉石房产总裁陆西 <br>
+                诺,两人成了欢喜冤家,遭到暗恋陆西诺的丁娟 <br>
+                的记恨... <a href="#">点击了解更多</a> </p>
+            <img src="../images/非诚勿扰img/btn.gif" alt="">
+        </div>
+    </div>
+    <script src="../jQuery/jquery-3.4.1.min.js">
+    </script>
+    <script>
+        $(function () {
+
+            $('h2').click(function () {
+                $('.red1').css('color', 'red');
+            })
+            $('.right p').eq(1).click(function () {
+                $('.weight1').css('font-weight', '900');
+            })
+            $('.red1').eq(2).click(() => {
+                $('.gbcolr').css({
+                    'background-color': '#f60',
+                    'color': '#fff'
+                })
+            })
+
+            $('.collec').click( ()=> {
+                alert('收藏成功');
+            })
+        })
+    </script>
+</body>
+
+</html>
