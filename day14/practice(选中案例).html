@@ -544,88 +544,93 @@
     <script src="../jQuery/jquery-3.4.1.min.js">
     </script>
     <script>
-       
+
 
 
         let index;
 
-//显示遮罩层
-$('textarea').click(function () {
-    $('.mask').css({
-        'display': 'block',
-        'width': `100%`,
-        'height': `100%`
-    })
+        //显示遮罩层
+        $('textarea').click(function () {
+            $('.mask').css({
+                'display': 'block',
+                'width': `100%`,
+                'height': `100%`
+            })
 
-        ; $('.sign').css({
-            'display': 'block',
+                ; $('.sign').css({
+                    'display': 'block',
+                })
         })
-})
 
-//显示每个模块
-for (let i = 0; i < $('.sign .content .left li').length; i++) {
+        //显示每个模块
+        for (let i = 0; i < $('.sign .content .left li').length; i++) {
 
-    $('.sign .content .left li').eq(i).mouseenter(() => {
+            $('.sign .content .left li').eq(i).mouseenter(() => {
 
 
-        $(".sign .content .right li").eq(index).removeClass('on');
-        $(".sign .content .left li").eq(index).removeClass('on');
-        index = i;
-        $(".sign .content .left li").eq(index).addClass('on');
-        $(".sign .content .right li").eq(index).addClass('on');
+                $(".sign .content .right li").eq(index).removeClass('on');
+                $(".sign .content .left li").eq(index).removeClass('on');
+                index = i;
+                $(".sign .content .left li").eq(index).addClass('on');
+                $(".sign .content .right li").eq(index).addClass('on');
 
-    })
-}
+            })
+        }
 
-//点击图片时切换路径
-$('.sign .content .right li .cever a').attr('flag', true);
-for (let k = 0; k < $('.sign .content .right li .cever a').length; k++) {
-    let $a = $('.sign .content .right li .cever a').eq(k);
-    $a.click(function () {
-        if ($a.attr('flag') == "true") {
-            if ($('.sign .selected p').children('span').length - 1 >= 4) {
-                let $span = $('<span><span>').css({ 'color': 'red', 'font-weight': '900' }).text('眼瞎吗,没看见只能选五项');
-                $('.sign .title').append($span);
-            } else {
-                let $span = $('<span><span>').css({ 'background': 'url("../招聘网站职位选择/images/select111.png") no-repeat' }).text($a.text());
-                $('.sign .selected p').append($span);
-                $a.css({ 'background': 'url("../招聘网站职位选择/images/select111.png") no-repeat' });
-                $a.attr('flag', false);
+        //点击图片时切换路径
+        $('.sign .content .right li .cever a').attr('flag', true);
+        for (let k = 0; k < $('.sign .content .right li .cever a').length; k++) {
+            let $a = $('.sign .content .right li .cever a').eq(k);
+            $a.click(function () {
+                if ($a.attr('flag') == "true") {
+                    if ($('.sign .selected p').children('span').length - 1 >= 4) {
+                        let $span = $('<span><span>').css({ 'color': 'red', 'font-weight': '900' }).text('眼瞎吗,没看见只能选五项');
+                        $('.sign .title').append($span);
+                    } else {
+                        let $span = $('<span><span>').css({ 'background': 'url("../招聘网站职位选择/images/select111.png") no-repeat' }).text($a.text());
+                        $span.click(function () {
+                            $span.remove();
+                            $a.css({ 'background': 'url("../招聘网站职位选择/images/select000.png") no-repeat' });
+                            $a.attr('flag', true);
+                        })
+                        $('.sign .selected p').append($span);
+                        $a.css({ 'background': 'url("../招聘网站职位选择/images/select111.png") no-repeat' });
+                        $a.attr('flag', false);
 
-            }
+                    }
 
-        } else {
+                } else {
 
-            for (let j = 0; j < $('.sign .selected p span').length; j++) {
-                if ($(this).text() == $('.sign .selected p span').eq(j).text()) {
-                    $('.sign .selected p span').eq(j).remove();
+                    for (let j = 0; j < $('.sign .selected p span').length; j++) {
+                        if ($(this).text() == $('.sign .selected p span').eq(j).text()) {
+                            $('.sign .selected p span').eq(j).remove();
+                        }
+                    }
+
+                    $a.css({ 'background': 'url("../招聘网站职位选择/images/select000.png") no-repeat' });
+                    $a.attr('flag', true);
                 }
-            }
 
-            $a.css({ 'background': 'url("../招聘网站职位选择/images/select000.png") no-repeat' });
-            $a.attr('flag', true);
+
+            })
+
+
+
         }
 
 
-    })
-
-
-
-}
 
 
 
 
-         
+        for (let j = 0; j < $('.sign .selected p span').length; j++) {
+            console.log(1)
+            $('.sign .selected p span').bind("click", function () {
+                $(this).remove();
+            });
 
-         for (let j = 0; j < $('.sign .selected p span').length; j++) {
-             console.log(1)
-             $('.sign .selected p span').bind("click", function () {
-                 $(this).remove();
-                });
+        }
 
-         }
-   
 
 
 
