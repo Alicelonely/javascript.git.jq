@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            display: none;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 0 0 20px;
+            font-size: 18px;
+            background-color: #ebebeb;
+        }
+
+        ul li img {
+            vertical-align: middle;
+        }
+
+        .wrap {
+            display: block;
+            width: 190px;
+            border-left: 10px solid #fe705c;
+        }
+
+        li.wrap1{
+            display: block;
+        }
+        .on {
+            background-color: #f9dbd1;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li class="wrap">购物特权</li>
+        <li> <img src="../images/day16jq练习images/gouwu.gif" alt=""> 全额兑换</li>
+        <li> <img src="../images/day16jq练习images/gouwu.gif" alt=""> 俱乐部包邮卡</li>
+        <li> <img src="../images/day16jq练习images/gouwu.gif" alt=""> 购物领金币</li>
+        <li> <img src="../images/day16jq练习images/gouwu.gif" alt=""> 每日领金币</li>
+        <li> <img src="../images/day16jq练习images/gouwu.gif" alt=""> VIP特权</li>
+    </ul>
+    <script src="../jQuery/jquery-3.4.1.min.js">
+    </script>
+    <script>
+
+      
+           
+
+            $('.wrap').click(function () {
+
+                $('ul li:gt(0)').each(function(i){
+                    $('ul li:gt(0)').eq(i).toggleClass("wrap1");
+                });
+
+            })
+
+
+                $('ul li:gt(0)').mouseenter(function () {
+                    $('ul li:gt(0)').each(function(i){
+                        $('ul li:gt(0)').eq(i).removeClass('on')
+                    })
+                    $(this).toggleClass(" on");
+
+                })
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

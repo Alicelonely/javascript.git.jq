@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    li{
+        list-style: none;
+    }
+    .banner{
+        width: 1000px;
+        height: 50px;
+        background-color: #2ca8a8;
+    }
+
+    .banner ul li{
+        width: 120px;
+        float: left;
+        font-size: 18px;
+        text-align: center;
+        line-height: 50px;
+        color: #fff;
+    }
+
+    .banner ul li:nth-child(1){
+        background-color: #147b81;
+    }
+
+    .on{
+        background-color: #147b81;
+    }
+    </style>
+
+</head>
+<body>
+    <div class="banner">
+        <ul>
+            <li class="test">首页</li>
+            <li>美食</li>
+            <li>电影</li>
+            <li>KTV</li>
+            <li>酒店</li>
+            <li>购物</li>
+            <li>身边团购</li>
+            <li>超市</li>
+        </ul>
+    </div>
+<script src="../jQuery/jquery-3.4.1.min.js">
+</script>
+<script>
+    // $(function(){
+    //     $('ul li').mouseenter(function(){
+    //         $(this).css({'background-color':'#147b81'})
+    //     }).mouseleave(function(){
+    //         $('ul li:not(.test)').css({'background-color':'#2ca8a8'})
+    //     })
+    // })
+
+
+    $(function(){
+
+        $('ul li').mouseenter(function(){
+            $('ul li').each(function(i){
+                $('ul li').eq(i).removeClass('on')
+            })
+            $(this).toggleClass('on');
+        })
+
+
+    })
+</script>
+</body>
+</html>
