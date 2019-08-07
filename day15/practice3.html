@@ -29,21 +29,28 @@
     <script src="../jQuery/jquery-3.4.1.min.js">
     </script>
     <script>
-        $("p:even").css({ "background-color": "#ccc" });
-        $("p.test").css({ "background-color": "#ff99cc" });
-        $("p:gt(4)").hide();
-      
-        let flag = true;
+        // $("p:even").css({ "background-color": "#ccc" });
+        // $("p.test").css({ "background-color": "#ff99cc" });
+        // $("p:gt(4)").hide();
 
-        $("h4").click(() => {
-            if (flag) {
-                $("p:gt(4)").show();
-                flag = !flag;
-            } else {
-                $("p:gt(4)").hide();
-                flag = !flag;
-            }
+        // let flag = true;
+
+        // $("h4").click(() => {
+        //     if (flag) {
+        //         $("p:gt(4)").show();
+        //         flag = !flag;
+        //     } else {
+        //         $("p:gt(4)").hide();
+        //         flag = !flag;
+        //     }
+        // })
+        $("p:gt(4)").hide();
+        $("h4").click(function(){
+
+            $("p:gt(4)").toggle()
+            
         })
+
     </script>
 </body>
 
