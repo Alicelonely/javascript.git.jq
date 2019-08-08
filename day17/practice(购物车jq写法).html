@@ -137,60 +137,65 @@
             </tfoot>
         </table>
     </div>
-    <script src="../jQuery/jquery-3.4.1.min.js"></script>
+    <script src="../jQuery/jquery-1.8.3.min.js"></script>
     <script>
 
 
 
-        // let redu = document.querySelectorAll("redu"),
-        //     add = document.querySelectorAll("add"),
-        //     num = document.querySelectorAll("num"),
-        //     price = document.querySelectorAll("price"),
-        //     tolprice = document.querySelectorAll("tolprice"),
-        //     nam = document.querySelectorAll('.nam'),
-        //     totalnum = document.querySelector("totalnum"),
-        //     total = document.querySelector("total"),
-        //     name = document.querySelector("name"),
-        //     amount = document.querySelector("amount"),
-        //     univalence = document.querySelector("univalence"),
-        //     fare = document.querySelector("fare"),
-        //     affirm = document.querySelector("affirm"),
-        //     tables = document.querySelector("tbody");
-
-        function $(a) {
-            return document.getElementsByClassName(a)[0]
-        }
-
-
-        
-        function ad(b) {
-            return document.getElementsByClassName(b)
-        }
 
 
 
-        //添加减少商品
-        for (let i = 0; i < ad("tolprice").length; i++) {
-            ad("add")[i].onclick = function () {
-                console.log(2)
-                ad("num")[i].innerHTML++
-                cale(i)
+
+
+
+
+
+
+
+        //数量加
+
+        $("tbody").on({
+            click: function () {
+
+
+
+                $(this).each(function (i) {
+
+                    $(".add").eq(i).each(function (i) {
+                        $(".num")[i].innerHTML++;
+                        cale(i);
+                    })
+
+
+                })
+
+
             }
-            ad("redu")[i].onclick = function () {
+        }, ".add")
 
-             
-                ad("num")[i].innerHTML--;
 
-                if (ad("num")[i].innerHTML * 1 <= 0) {
-                    ad("num")[i].innerHTML = 0;
-                    ad("tolprice")[i].innerHTML = 0;
 
+        //数量减
+        $(".redu").each(function (i) {
+            $("tbody").on({
+                click: function () {
+
+
+                    $(".num")[i].innerHTML--;
+
+                    if ($(".num")[i].innerHTML * 1 <= 0) {
+                        $(".num")[i].innerHTML = 0;
+                        $(".tolprice")[i].innerHTML = 0;
+
+                    }
+                    cale(i)
                 }
-                cale(i)
-            }
+
+            }, ".redu")
+        })
 
 
-        }
+
 
 
         //小计总计
@@ -198,27 +203,33 @@
 
             let talnum = 0,
                 talprice = 0;
-            let yunfei = ad("freight")[idx].innerHTML;
-            if (ad("num")[idx].innerHTML * 1 == 0) {
+
+            let yunfei = $(".freight")[idx].innerHTML;
+
+            if ($(".num")[idx].innerHTML * 1 == 0) {
                 yunfei = 0;
             }
-            ad("tolprice")[idx].innerHTML = ad("num")[idx].innerHTML * 1 * ad("price")[idx].innerHTML * 1 + yunfei * 1;
-            for (let i = 0; i < ad("tolprice").length; i++) {
-                talnum += ad("num")[i].innerHTML * 1
-                talprice += ad("tolprice")[i].innerHTML * 1
+
+            $(".tolprice")[idx].innerHTML = $(".num")[idx].innerHTML * 1 * $(".price")[idx].innerHTML * 1 + yunfei * 1;
+            for (let i = 0; i < $(".tolprice").length; i++) {
+                talnum += $(".num")[i].innerHTML * 1
+                talprice += $(".tolprice")[i].innerHTML * 1
             }
 
+            console.log(talnum, talprice)
 
-            $("totalnum").innerHTML = talnum;
+            $(".totalnum")[0].innerHTML = talnum;
 
-            $("total").innerHTML = talprice;
+            $(".total")[0].innerHTML = talprice;
         }
 
 
         //添加商品
         function sdd() {
-            if ($("name1").value != '' && $("amount").value != '' && $("univalence").value != '' && $("fare").value != '') {
-                let oTr = document.createElement("TR");
+
+            if ($(".name1").val() != '' && $(".amount").val() != '' && $(".univalence").val() != '' && $(".fare").val() != '') {
+                console.log(333)
+                let $oTr = $("<tr></tr>");
                 // let otd = document.createElement("TD");
                 // let oSpan = document.createElement("SPAN");
                 // let ipt = document.createElement("INPUT");
@@ -227,26 +238,26 @@
                 //     otd.appendChild(ipt);
                 //     oTr.appendChild(otd);
                 //     // otd.className = "nam";
-                //     // otd.innerHTML = `${$("name1").value}`
+                //     // otd.innerHTML = `${$(".name1").value}`
                 //     // oTr.appendChild(otd);
                 //     abs.appendChild(oTr);
 
 
-                oTr.innerHTML += `
+                $oTr.html(`
                 <td><input type="checkbox" class="election"></td>
                 <td class="nam">
-                        ${$("name1").value}
+                        ${$(".name1").val()}
                     </td>
                 <td>
                     <span class="reduce redu">-</span>
-                    <span class="num">${$("amount").value}</span>
+                    <span class="num">${$(".amount").val()}</span>
                      <span class="reduce add">+</span> 
                 </td>
                 <td>
-                    <span class="price">${$("univalence").value}</span>
+                    <span class="price">${$(".univalence").val()}</span>
                 </td>
                 <td>
-                    <span class="freight">${$("fare").value}</span>
+                    <span class="freight">${$(".fare").val()}</span>
                 </td>
                 <td>
                     <span class="tolprice">0</span>
@@ -254,12 +265,12 @@
                 <td>
                     <input type="button" value="删除" class="del">
                 </td>
-                `
-                $("tbody1").appendChild(oTr);
-                $("name1").value = ''
-                $("amount").value = ''
-                $("univalence").value = ''
-                $("fare").value = ''
+                `)
+                $(".tbody1").append($oTr);
+                $(".name1").val() = ''
+                $(".amount").val() = ''
+                $(".univalence").val() = ''
+                $(".fare").val() = ''
             }
 
 
@@ -273,13 +284,13 @@
 
         //确认商品
         function Submission() {
-            for (let i = 0; i < ad("num").length; i++) {
+            for (let i = 0; i < $(".num").length; i++) {
                 if (sub.value !== "") {
-                    confirm(`你购买的商品如下:${oTd[0].innerHTML}:${ad("nam")[i].innerHTML}
-            ${oTd[1].innerHTML}:${ad("num")[i].innerHTML}
-            ${oTd[2].innerHTML}:${ad("price")[i].innerHTML}
-            ${oTd[3].innerHTML}:${ad("freight")[i].innerHTML}
-            ${oTd[4].innerHTML}:${ad("tolprice")[i].innerHTML}
+                    confirm(`你购买的商品如下:${oTd[0].innerHTML}:${$(".nam")[i].innerHTML}
+            ${oTd[1].innerHTML}:${$(".num")[i].innerHTML}
+            ${oTd[2].innerHTML}:${$(".price")[i].innerHTML}
+            ${oTd[3].innerHTML}:${$(".freight")[i].innerHTML}
+            ${oTd[4].innerHTML}:${$(".tolprice")[i].innerHTML}
             送货地址:${sub.value}
             `)
                 }
@@ -288,26 +299,27 @@
         }
 
         //删除行
-        for (let i = 0; i < ad("del").length; i++) {
-            ad("del")[i].onclick = function (){
-                
-                let oTr = this.parentNode.parentNode;
-                oTr.parentNode.removeChild(oTr);
-            }
 
-        }
+        $(document).on("click", ".del", function () {
+
+            let oTr = this.parentNode.parentNode;
+            oTr.parentNode.removeChild(oTr);
+
+        })
+
+
 
 
         //全选按钮
         function allElection() {
 
-            for (let i = 0; i < ad("election").length; i++) {
-                if ($("all").checked) {
-                    if (!ad("election")[i].checked) {
-                        ad("election")[i].checked = true;
+            for (let i = 0; i < $(".election").length; i++) {
+                if ($(".all").checked) {
+                    if (!$(".election")[i].checked) {
+                        $(".election")[i].checked = true;
                     }
                 } else {
-                    ad("election")[i].checked = false;
+                    $(".election")[i].checked = false;
                 }
             }
         }
@@ -315,15 +327,15 @@
 
         //反选按钮
         function reverseElection() {
-            for (let i = 0; i < ad("election").length; i++) {
-                if ($("reverse").checked) {
-                    if (ad("election")[i].checked) {
-                        ad("election")[i].checked = false;
+            for (let i = 0; i < $(".election").length; i++) {
+                if ($(".reverse").checked) {
+                    if ($(".election")[i].checked) {
+                        $(".election")[i].checked = false;
                     } else {
-                        ad("election")[i].checked = true;
+                        $(".election")[i].checked = true;
                     }
                 } else {
-                    ad("election")[i].checked = false;
+                    $(".election")[i].checked = false;
                 }
             }
 
@@ -331,15 +343,18 @@
 
 
         //删除所选
-        function delElection(){
-            for (let i = 0; i < ad("election").length; i++) {
-                if (ad("election")[i].checked) {
-                    let oTr = ad("election")[i].parentNode.parentNode;
+        function delElection() {
+            for (let i = 0; i < $(".election").length; i++) {
+                if ($(".election")[i].checked) {
+                    let oTr = $(".election")[i].parentNode.parentNode;
                     oTr.parentNode.removeChild(oTr);
                     i--;
                 }
             }
         }
+    </script>
+    <script>
+
     </script>
 </body>
 
