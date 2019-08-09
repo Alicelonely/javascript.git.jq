@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+    //Asynchronous Javascript and XML   异步的js和xml （现在xml已经被json替换）
+
+    //Asynchronous Javascript and json
+
+    //Jesses James Garrett    2005年发现了ajax  号称ajax之父
+
+    //发送给后台的数据有两种 get post
+
+    //get 好处：便于分享网址    数据暴露    数据不能太多    理论上最多上只能传2KB   get的传递的内容在？后面，没有流的传输
+
+    //post  好处：以json的方式传递的  相对于get来说比较安全  数据理论上说是无限的       地址不能分享
+
+
+    //主流浏览器
+        
+    //第一步  let xhr = new XMLHttpRequst()     这就是ajax对象      ie低版本不支持
+
+    //兼容ie低版本
+    //let xhr = new ActiceXObject('Msxml2.XMLHTTP')
+
+    //第二步 配置请求内容
+    //ajax 对象身上的open方法
+    //三个参数  第一个请求方式，第二个请求地址，第三个是否异步
+    //xhr.open('get',地址,true)；
+
+    //第三步 发送请求
+    //使用的是ajax对象身上的send方法
+    xhr.send(null);     这是get的传输方式       因为get传输的内容是直接在？后面所以不需要流的传输
+
+
+    如果使用post必须配置请求头
+    xhr.setRequestHeader("content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+    xhr.send('userId=2')                      post请求
+ 
+    第四步 接受后台给前端发送的数据
+    通过ajax对象的一个属性responseText
+        4.1状态     
+            readyState
+            0   创建ajax完毕
+            1   调用open
+            2   调用send
+            3   服务端返回了一部分数据
+            4   数据全部发送，ajax请求完成
+        4.2监听状态事件
+            ajax对象的一个方法  onreadystatechange
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    console.log(xhr.responseText);
+                }
+            }
+        
+        4.3     http状态码
+            100之后 表示服务器有问题
+            200 请求成功
+            300 也代表成功
+            400 就是失败
+
+        通过ajax对象身上的status属性
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4){
+                if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304){
+                
+                    console.log(xhr.responseText);
+
+                }
+            }
+        }
+
+<script src="../jQuery/jquery-3.4.1.min.js">
+</script>
+<script>
+</script>
+</body>
+</html>

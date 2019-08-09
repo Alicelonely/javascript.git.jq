@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="../jQuery/jquery-3.4.1.min.js">
+    </script>
+    <script>
+        function ajax(json) {
+            //默认值
+            let method = json.method && json.method.toUpperCase() || 'GET';
+            let data = json.data || {};
+            let xhr;
+
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                xhr = new ActiceXObject('Msxml2.XMLHTTP');
+            }
+
+
+            //第二步 发送请求内容   第三步第四部在一起
+            switch (method) {
+                case 'GET':
+                    xhr.open(method, json.url + '?' + jsonUrl(json.data), true);
+                    xhr.send(null);
+                    break;
+                case 'POST':
+                    xhr.open(method, json.url, true);
+                    xhr.setRequestHeader("content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+                    xhr.send(jsonUrl(json.data));
+                    break;
+            }
+
+
+            //获取请求数据
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+
+                        json.success(xhr.responseText);
+
+                    } else {
+                        json.error(xhr.responseText);
+                    }
+                }
+            }
+
+
+
+            //4.处理数据
+            function jsonUrl(data) {
+                let arr = [];
+                for (let key in data) {
+                    arr.push(key + '=' + data[key]);
+                }
+                return arr.join('&');
+            }
+
+
+
+
+        }
+
+
+        ajax({
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            method: 'get',
+            data: {
+                userId: 3
+            },
+            success(data) {
+                console.log(data);
+            },
+            error(err) {
+                console.log(err);
+            }
+        })
+    </script>
+</body>
+
+</html>

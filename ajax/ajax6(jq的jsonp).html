@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #wrap {
+            width: 100px;
+            border: 1px solid transparent;
+        }
+
+        li {
+            font-size: 12px;
+            line-height: 30px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="text">
+    <input type="submit" value="搜索" id="btn">
+    <div id="wrap">
+
+        <script src="../jQuery/jquery-3.4.1.min.js">
+        </script>
+        <script>
+            $(function () {
+
+                text.oninput = function () {
+                    $.ajax({
+                        url: "https://www.baidu.com/sugrec",
+                        data: {
+                            prod: "pc",
+                            wd:this.value,
+                            cb:"callback"
+                        },
+                        dataType: 'jsonp',
+                        jsonpCallback: 'callback',
+                        success(data) {
+                            console.log(data);
+                        }
+                    })
+                }
+
+
+            })
+        </script>
+</body>
+
+</html>

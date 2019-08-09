@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #wrap {
+            width: 100px;
+            border: 1px solid transparent;
+        }
+
+        li {
+            font-size: 12px;
+            line-height: 30px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="text">
+    <input type="submit" value="搜索" id="btn">
+    <div id="wrap">
+
+
+    </div>
+    <script src="../jQuery/jquery-3.4.1.min.js">
+    </script>
+    <script>
+        //第二种方式    jsonp
+        //JSON      Javascript Object Notaiton      全称
+        //jsonp     JSON with Padding
+
+        //jsonp的使用
+        //第一步在创建函数
+        let ul = document.createElement("ul");
+
+        function callback(json) {
+            let data = json.g;
+            ul.innerHTML = '';
+            data.forEach((item, i) => {
+
+                if (i < 5) {
+                    ul.innerHTML += `            <li><a href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=${item.q}&oq=%25E4%25BA%2594%25E4%25BD%258D%25E4%25B8%2580%25E4%25BD%2593&rsv_pq=effe2f510010c2b2&rsv_t=53f8SEhSc5Yle6ui%2BuWDv9ly%2BCGoR4zihrFAfB2YX9EhKnnMitVzsoLdVUI&rqlang=cn&rsv_enter=1&rsv_dl=tb&rsv_sug1=13&rsv_sug7=101&rsv_sug3=8&bs=%E4%BA%94%E4%BD%8D%E4%B8%80%E4%BD%93">
+                    ${item.q}
+                    </a>
+                    </li>
+                        `
+                }
+
+            });
+            wrap.appendChild(ul);
+        }
+
+        //第二步引入数据路径
+        //<script src="https://www.baidu.com/sugrec?prod=pc&wd=wuwei&cb=callback">
+        text.oninput = function () {
+
+            let script = document.createElement("script");
+
+            script.src = `https://www.baidu.com/sugrec?prod=pc&wd=${this.value}&cb=callback`;
+
+            document.body.appendChild(script);
+
+        }
+
+        btn.onclick = function () {
+            location.href = `https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=${text.value}&oq=%25E4%25BA%2594%25E4%25BD%258D%25E4%25B8%2580%25E4%25BD%2593&rsv_pq=effe2f510010c2b2&rsv_t=53f8SEhSc5Yle6ui%2BuWDv9ly%2BCGoR4zihrFAfB2YX9EhKnnMitVzsoLdVUI&rqlang=cn&rsv_enter=1&rsv_dl=tb&rsv_sug1=13&rsv_sug7=101&rsv_sug3=8&bs=%E4%BA%94%E4%BD%8D%E4%B8%80%E4%BD%93`
+        }
+    </script>
+    <!-- <script src="https://www.baidu.com/sugrec?prod=pc&wd=wuwei&cb=callback"></script> -->
+</body>
+
+</html>

@@ -67,7 +67,8 @@
                 <tr>
                     <td><input type="checkbox" class="election"></td>
                     <td class="nam">双飞燕键盘1</td>
-                    <td><span class="reduce redu">-</span><span class="num">0</span> <span class="reduce add">+</span>
+                    <td><span class="reduce redu" onclick="redu1()">-</span><span class="num">0</span> <span class="reduce add"
+                            onclick="add1(this)">+</span>
                     </td>
                     <td><span class="price">100</span> </td>
                     <td><span class="freight">25</span></td>
@@ -76,8 +77,9 @@
                 </tr>
                 <tr>
                     <td><input type="checkbox" class="election"></td>
-                    <td class="nam">双飞燕键盘2</td>
-                    <td><span class="reduce redu">-</span><span class="num">0</span> <span class="reduce add">+</span>
+                    <td class="nam">双飞燕键盘1</td>
+                    <td><span class="reduce redu" onclick="redu1()">-</span><span class="num">0</span> <span class="reduce add"
+                            onclick="add1(this)">+</span>
                     </td>
                     <td><span class="price">100</span> </td>
                     <td><span class="freight">25</span></td>
@@ -86,8 +88,9 @@
                 </tr>
                 <tr>
                     <td><input type="checkbox" class="election"></td>
-                    <td class="nam">双飞燕键盘3</td>
-                    <td><span class="reduce redu">-</span><span class="num">0</span> <span class="reduce add">+</span>
+                    <td class="nam">双飞燕键盘1</td>
+                    <td><span class="reduce redu" onclick="redu1()">-</span><span class="num">0</span> <span class="reduce add"
+                            onclick="add1(this)">+</span>
                     </td>
                     <td><span class="price">100</span> </td>
                     <td><span class="freight">25</span></td>
@@ -96,8 +99,9 @@
                 </tr>
                 <tr>
                     <td><input type="checkbox" class="election"></td>
-                    <td class="nam">双飞燕键盘4</td>
-                    <td><span class="reduce redu">-</span><span class="num">0</span> <span class="reduce add">+</span>
+                    <td class="nam">双飞燕键盘1</td>
+                    <td><span class="reduce redu" onclick="redu1()">-</span><span class="num">0</span> <span class="reduce add"
+                            onclick="add1(this)">+</span>
                     </td>
                     <td><span class="price">100</span> </td>
                     <td><span class="freight">25</span></td>
@@ -150,36 +154,34 @@
 
 
 
-
-
         //数量加
 
-        $("tbody").on({
-            click: function () {
+
+        function add1(thi) {
 
 
 
-                $(this).each(function (i) {
+            $(thi).each(function (i) {
 
-                    $(".add").eq(i).each(function (i) {
-                        $(".num")[i].innerHTML++;
-                        cale(i);
-                    })
-
-
+                $(".add").eq(i).each(function (i) {
+                    $(".num")[i].innerHTML++;
+                    cale(i);
                 })
 
 
-            }
-        }, ".add")
+            })
+
+
+        }
+
+
 
 
 
         //数量减
-        $(".redu").each(function (i) {
-            $("tbody").on({
-                click: function () {
+       function redu1() {
 
+                $(".redu").each(function (i) {
 
                     $(".num")[i].innerHTML--;
 
@@ -189,10 +191,9 @@
 
                     }
                     cale(i)
-                }
+                })
 
-            }, ".redu")
-        })
+       }
 
 
 
@@ -249,9 +250,9 @@
                         ${$(".name1").val()}
                     </td>
                 <td>
-                    <span class="reduce redu">-</span>
+                    <span class="reduce redu" onclick="redu1()">-</span>
                     <span class="num">${$(".amount").val()}</span>
-                     <span class="reduce add">+</span> 
+                     <span class="reduce add" onclick="add1()">+</span> 
                 </td>
                 <td>
                     <span class="price">${$(".univalence").val()}</span>
@@ -267,10 +268,7 @@
                 </td>
                 `)
                 $(".tbody1").append($oTr);
-                $(".name1").val() = ''
-                $(".amount").val() = ''
-                $(".univalence").val() = ''
-                $(".fare").val() = ''
+               
             }
 
 
