@@ -5,6 +5,12 @@
  * 
  *  require()   引入
  *  exports     导出 相当于return  有开发着决定数据的变量名
+ *              真正导出的是module.exports  而exports和module.exports是引用关系
+ *              
+ *              如果不理解就所有就module.exports导出        它的默认值是空对象
+ * 
+ *              
+ *   模块缓存   两次引入同一个文件是没有意义的，用的就是之前的结果不会重新加载
  */
 
 // let getX =  require("./demo");
