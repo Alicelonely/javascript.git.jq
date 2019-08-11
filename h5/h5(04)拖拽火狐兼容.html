@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+
+        body{
+            display: flex;
+            justify-content: space-between;
+            /* user-select: none;   文字不能被选中 */
+        }
+
+        #target{
+            width: 300px;
+            height: 500px;
+            background-color: deeppink;
+        }
+
+        #target .box{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+
+        ul li{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #f60;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="target">目标元素</div>
+    <div id="box" draggable="true">拖拽元素</div>
+    <ul>
+        <li draggable="true">1</li>
+        <li draggable="true"></li>
+        <li draggable="true"></li>
+        <li draggable="true"></li>
+        <li draggable="true"></li>
+        <li draggable="true"></li>
+        <li draggable="true"></li>
+        <li draggable="true"></li>
+    </ul>
+    <script>
+
+        //火狐兼容性问题
+        const target = document.querySelector("#target");
+        const box = document.querySelector("#box");
+        const aLi = document.querySelectorAll("li");
+        // aLi.forEach((item,index)=>{
+        //     item.ondragstart = function(e){
+        //         this.style.cssText = `background-color:pink;`
+        //         e.dataTransfer.setData('index',index)
+        //     }
+        // })
+        //拖拽元素身上的事件一共有三个
+          //1.ondragstart   拖拽元素开始的时候触发，只执行一次
+          box.ondragstart = function(){
+              box.style.cssText = `background-color:pink;`
+              e.dataTransfer.setData('key','aa');       //火狐就是需要给拖拽的元素加数据
+          }  
+          //2.ondrag    元素被拖拽时候触发的事件，这个事件是连续触发的
+          box.ondrag = function(){
+              box.style.cssText = `background-color:skyblue;`
+          }
+          //3.拖拽元素被松开鼠标的那一刻结束，只执行一次
+          box.ondragend = function(){
+              box.style.cssText = `background-color:green;`
+          }
+
+        //目标元素身上的事件有四个
+          //1.ondragenter   拖拽元素进入目标元素的时候触发事件，只执行一次
+          target.ondragenter = function(){
+              target.innerHTML = `轻松开鼠标`;
+          }
+          //2.ondragover   拖拽元素在目标元素的时候触发事件，会连续触发
+          target.ondragover = function(e){
+            this.style.cssText = `background-color:#ccc;`
+           // e.preventDefault();     //DOM2级阻止默认事件
+            return false;           //DOM0级阻止默认事件
+          }
+          //3.ondragleave   拖拽元素离开目标元素的时候触发事件，只执行一次
+          target.ondragleave = function(){
+              target.innerHTML = `请将元素拖至此处`;
+          }
+          //4.ondrop        拖拽元素在目标元素身上松开鼠标时候触发的事件
+          aLi.forEach((item,index)=>{
+            item.ondragstart = function(e){
+                this.style.cssText = `background-color:pink;`
+                e.dataTransfer.setData('index',index);
+                console.log( e.dataTransfer.setData('index'))
+            }
+        })  
+       
+          //4.ondrop        拖拽元素在目标元素身上松开鼠标时候触发的事件
+          target.ondrop = function(e){
+            this.style.cssText = `background-color:deeppink;`
+           
+         console.log(aLi[e.dataTransfer.getData('index')]);
+            aLi[e.dataTransfer.getData('index')].parentNode.removeChild(aLi[e.dataTransfer.getData('index')]);
+          }
+    </script>
+</body>
+</html>

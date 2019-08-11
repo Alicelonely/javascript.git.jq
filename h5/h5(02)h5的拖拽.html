@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+    <style>
+        #box{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: deeppink;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="box" draggable="true">
+        draggable属性是让元素可以拖动
+    </div>
+    <script>
+        const box = document.querySelector("#box");
+        box.ondragend = function(e){
+            box.style.cssText = `top:${e.clientY}px;left:${e.clientX}px;`
+        }
+    </script>
+</body>
+</html>
