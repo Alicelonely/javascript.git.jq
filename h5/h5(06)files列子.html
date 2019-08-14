@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #box {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            bottom: 100px;
+            right: 100px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+    <script src="../jQuery/jquery-3.4.1.min.js">
+    </script>
+    <script>
+        const box = document.getElementById("box");
+
+        box.ondragover = function () {
+            return false;
+        }
+
+        // box.ondrop = function (e) {
+        //     const oFile = e.dataTransfer.files[0];
+        //     //1.读取文件信息  创建FileReader 对象
+        //     const file = new FileReader();
+        //     //读取文件对象身上有个获取文件url的方法
+        //     file.readAsDataURL(oFile);
+
+        //     //信息读取完之后执行的函数
+        //     file.onload = function () {
+
+        //         if (oFile.type.includes('image')) {
+        //             const img = new Image();
+        //             img.src = file.result;
+        //             img.width = '50'
+        //             img.height = '50'
+        //             box.appendChild(img);
+        //         }
+
+        //     }
+
+        //     return false;
+        // }
+
+
+
+
+        //Blob对象
+
+        //new Blob([文件数组]，类型json)
+        //没有64位那么长
+        box.ondrop = function (e) {
+            const oFile = e.dataTransfer.files[0];
+
+
+            if (oFile.type.includes('image')) {
+
+                //把文件转为Blob对象
+                const blob = new Blob([oFile]);
+
+                //在通过windows的URL对象来获取内存中的url
+                const url = window.URL.createObjectURL(blob);
+
+                const img = new Image();
+                img.src = url;
+                img.width = '50'
+                img.height = '50'
+                box.appendChild(img);
+            }
+
+            return false;
+
+        }
+
+    </script>
+</body>
+
+</html>
