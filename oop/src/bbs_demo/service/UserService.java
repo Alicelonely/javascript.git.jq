@@ -143,6 +143,7 @@ public class UserService {
         int choice = scanner.nextInt();
         switch (choice) {
             case 1:
+                userDao.viewUser();
                 Prohibit();
                 break;
             case 2:
@@ -157,7 +158,12 @@ public class UserService {
      * 禁用用户
      */
     public void Prohibit(){
-
+        System.out.println("请输入要修改的用户编号");
+        int uId = scanner.nextInt();
+        System.out.println("请输入修改后的状态(0:代表正常,1:代表禁用)");
+        int state = scanner.nextInt();
+        User user = new User(uId,state,);
+        userDao.Prohibit(user);
     }
 
     /**

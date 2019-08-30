@@ -108,6 +108,8 @@ public class UserDao extends DBUtil {
      */
     public boolean Prohibit(User user){
         String sql = "update user set state = ? where uId = ? and uName != ;";
-        Object [] params={1,user.getuId()};
+        Object [] params={user.getState(),user.getuId(),user.getuName()};
+        int result =  executeZSG(sql,params);
+        return result>0?true:false;
     }
 }
