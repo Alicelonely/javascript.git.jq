@@ -29,6 +29,7 @@ public class Demo {
                 init();
                 break;
             case 4:
+                System.out.println("祝你生活愉快");
                 break;
 
 

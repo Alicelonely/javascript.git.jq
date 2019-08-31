@@ -17,6 +17,13 @@ public class User implements Serializable {
         this.uPass = uPass;
     }
 
+
+
+    public User(int uId, int flag) {
+        this.uId = uId;
+        this.flag = flag;
+    }
+
     public User(int uId, String uName, String uPass, int state, int flag) {
         this.uId = uId;
         this.uName = uName;

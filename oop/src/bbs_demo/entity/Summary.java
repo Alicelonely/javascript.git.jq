@@ -10,9 +10,24 @@ public class Summary implements Serializable {
     private String uName;
     private int bId;
     private String bName;
+    private int f;      //汇总的最活跃用户发的帖子
+    private int g;      //汇总的版本总贴书
 
 
     public Summary() {
+    }
+
+    public Summary(String uName, int f) {
+        this.uName = uName;
+        this.f = f;
+    }
+
+    public int getF() {
+        return f;
+    }
+
+    public void setF(int f) {
+        this.f = f;
     }
 
     public Summary(int tId, String title, String context, String pTime, String uName, int bId, String bName) {

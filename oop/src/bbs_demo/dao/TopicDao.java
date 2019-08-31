@@ -28,6 +28,22 @@ public class TopicDao extends DBUtil {
     }
 
 
+    /**
+     * 删除主贴
+     *
+     * @param tId
+     * @return
+     */
+    public boolean delTopic(int tId) {
 
+        String sql = "delete from reply where tId = ?";
+        Object[] params = {tId};
+        executeZSG(sql, params);
+        String sql1 = "delete from topic where tId = ?";
+        Object[] params1 = {tId};
+        int result1 = executeZSG(sql1, params1);
+        int result = executeZSG(sql, params);
+        return result > 0 && result1 > 0 ? true : false;
 
+    }
 }
